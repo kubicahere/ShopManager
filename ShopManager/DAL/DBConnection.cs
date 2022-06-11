@@ -32,7 +32,7 @@ namespace ShopManager.DAL
             stringBuilder.Server = Properties.Settings.Default.server;
             stringBuilder.Database = Properties.Settings.Default.database;
             stringBuilder.Port = Properties.Settings.Default.port;
-            stringBuilder.Password = Properties.Settings.Default.paswd;
+            stringBuilder.Password = Properties.Settings.Default.password;
         }
     }
 }
