@@ -35,7 +35,7 @@ namespace ShopManager.DAL.Entities
         #region Methods
         public override string ToString()
         {
-            return $"{Name} {Surname}: {Salary}";
+            return $"{Name}: {Id}";
         }
 
         // Generate string for INSERT TO (code, place, gross_price, quantity) !Do aktualizacji!
