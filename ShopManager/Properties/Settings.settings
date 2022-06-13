@@ -6,13 +6,13 @@
       <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="database" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">sklep</Value>
+      <Value Profile="(Default)">shop</Value>
     </Setting>
     <Setting Name="userID" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">userSklep</Value>
+      <Value Profile="(Default)">userShop</Value>
     </Setting>
     <Setting Name="password" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">ekipa1234</Value>
+      <Value Profile="(Default)">Eskimos</Value>
     </Setting>
     <Setting Name="port" Type="System.UInt32" Scope="Application">
       <Value Profile="(Default)">3306</Value>

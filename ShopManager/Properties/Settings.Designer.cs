@@ -12,7 +12,7 @@ namespace ShopManager.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -34,7 +34,7 @@ namespace ShopManager.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sklep")]
+        [global::System.Configuration.DefaultSettingValueAttribute("shop")]
         public string database {
             get {
                 return ((string)(this["database"]));
@@ -43,7 +43,7 @@ namespace ShopManager.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("userSklep")]
+        [global::System.Configuration.DefaultSettingValueAttribute("userShop")]
         public string userID {
             get {
                 return ((string)(this["userID"]));
@@ -52,7 +52,7 @@ namespace ShopManager.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ekipa1234")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Eskimos")]
         public string password {
             get {
                 return ((string)(this["password"]));
