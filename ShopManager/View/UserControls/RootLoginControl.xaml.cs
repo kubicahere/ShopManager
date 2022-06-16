@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ShopManager.View
+namespace ShopManager.View.UserControls
 {
     public partial class RootLoginControl : UserControl
     {
