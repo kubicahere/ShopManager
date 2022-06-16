@@ -25,8 +25,8 @@ namespace ShopManager.View
             InitializeComponent();
         }
         #region Dependencies
-        public static readonly DependencyProperty GoBackProperty = DependencyProperty.Register(
-            "GoBack", typeof(ICommand), typeof(LoginControl), new FrameworkPropertyMetadata(null)
+        public static readonly DependencyProperty BackButtonProperty = DependencyProperty.Register(
+            "BackButton", typeof(ICommand), typeof(LoginControl), new FrameworkPropertyMetadata(null)
             );
         public static readonly DependencyProperty LogProperty = DependencyProperty.Register(
             "Log", typeof(ICommand), typeof(LoginControl), new FrameworkPropertyMetadata(null)
@@ -37,6 +37,49 @@ namespace ShopManager.View
         public static readonly DependencyProperty PasswordProperty = DependencyProperty.Register(
             "Password", typeof(string), typeof(LoginControl), new FrameworkPropertyMetadata(null)
             );
+        #endregion
+        #region Getters & setters
+        public ICommand BackButton
+        {
+            get { return (ICommand)GetValue(BackButtonProperty); }
+            set { SetValue(BackButtonProperty, value); }
+        }
+        public ICommand Log
+        {
+            get { return (ICommand)GetValue(LogProperty); }
+            set { SetValue(LogProperty, value); }
+        }
+        public ICommand Login
+        {
+            get { return (ICommand)GetValue(LoginProperty); }
+            set { SetValue(LoginProperty, value); }
+        }
+        public ICommand Password
+        {
+            get { return (ICommand)GetValue(PasswordProperty); }
+            set { SetValue(PasswordProperty, value); }
+        }
+        #endregion
+        #region Events
+        public static readonly RoutedEvent BackButtonClickEvent = 
+            EventManager.RegisterRoutedEvent("OtherBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
+        public event RoutedEventHandler BackButtonClick
+        {
+            add { AddHandler(BackButtonClickEvent, value); }
+            remove { RemoveHandler(BackButtonClickEvent, value); }
+        }
+        public static readonly RoutedEvent LogClickEvent =
+            EventManager.RegisterRoutedEvent("OtherLogClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
+        public event RoutedEventHandler LogClick
+        {
+            add { AddHandler(LogClickEvent, value); }
+            remove { RemoveHandler(LogClickEvent, value); }
+        }
+        void RaiseLogClick(object sender, SelectionChangedEventArgs e)
+        {
+            RoutedEventArgs args = new RoutedEventArgs(LogClickEvent);
+            RaiseEvent(args);
+        }
         #endregion
     }
 }
