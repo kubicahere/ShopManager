@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ShopManager.Model.Controls
+namespace ShopManager.View
 {
     /// <summary>
-    /// Interaction logic for LoginControl.xaml
+    /// Interaction logic for RegisterControl.xaml
     /// </summary>
-    public partial class LoginControl : UserControl
+    public partial class RegisterControl : UserControl
     {
-        public LoginControl()
+        public RegisterControl()
         {
             InitializeComponent();
         }

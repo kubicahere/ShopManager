@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ShopManager.Model.Controls
+namespace ShopManager.View
 {
     public partial class StartControl : UserControl
     {
