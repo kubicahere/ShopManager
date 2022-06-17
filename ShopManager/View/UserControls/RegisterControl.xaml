@@ -10,32 +10,41 @@
         <Button Content="Back" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="50" Height="25"
                 Command="{Binding BackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <TextBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+        <TextBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+                 Width="150" Height="30" FontSize="20" Text="{Binding Firstname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+        <Label Content="First name: " HorizontalAlignment="Left" Margin="65,30,0,0" VerticalAlignment="Top" FontSize="15" Width="90"/>
+        <TextBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+                 Width="150" Height="30" FontSize="20" Text="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+        <Label Content="Surname: " HorizontalAlignment="Left" Margin="75,70,0,0" VerticalAlignment="Top" FontSize="15" Width="75"/>
+        
+        <TextBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
                  Width="150" Height="30" FontSize="20" Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <Label Content="Login: " HorizontalAlignment="Left" Margin="95,50,0,0" VerticalAlignment="Top" FontSize="15" Width="75"/>
+        <Label Content="Login: " HorizontalAlignment="Left" Margin="95,110,0,0" VerticalAlignment="Top" FontSize="15" Width="75"/>
 
-        <com:BindablePasswordBox HorizontalAlignment="Center" Margin="0,85,0,0" VerticalAlignment="Top" 
+        <com:BindablePasswordBox HorizontalAlignment="Center" Margin="0,145,0,0" VerticalAlignment="Top" 
                  Width="150" Height="30" FontSize="20" Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"               
                  />
-        <Label Content="Password: " HorizontalAlignment="Left" Margin="70,85,0,0" VerticalAlignment="Top" FontSize="15" Width="75"/>
+        <Label Content="Password: " HorizontalAlignment="Left" Margin="70,145,0,0" VerticalAlignment="Top" FontSize="15" Width="75"/>
 
-        <com:BindablePasswordBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" 
+        <com:BindablePasswordBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" 
                  Width="150" Height="30" FontSize="20" Password="{Binding RepeatPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <Label Content="Repeat password: " HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top" FontSize="15" Width="125"/>
+        <Label Content="Repeat password: " HorizontalAlignment="Left" Margin="20,180,0,0" VerticalAlignment="Top" FontSize="15" Width="125"/>
 
-        <TextBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+        <TextBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
                  Width="150" Height="30" FontSize="20" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <Label Content="Phone number:" HorizontalAlignment="Left" Margin="35,155,0,0" VerticalAlignment="Top" FontSize="15" Width="125"/>
+        <Label Content="Phone number:" HorizontalAlignment="Left" Margin="35,215,0,0" VerticalAlignment="Top" FontSize="15" Width="125"/>
 
-        <TextBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+        <TextBox BorderBrush="Black" HorizontalAlignment="Center" Margin="0,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
                  Width="150" Height="30" FontSize="20" Text="{Binding EmailAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <Label Content="E-mail: " HorizontalAlignment="Left" Margin="90,190,0,0" VerticalAlignment="Top" FontSize="15" Width="75"/>
-        <Button Content="Register" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Height="40" Width="100" FontSize="20"
+        <Label Content="E-mail: " HorizontalAlignment="Left" Margin="90,250,0,0" VerticalAlignment="Top" FontSize="15" Width="75"/>
+        <Button Content="Register" HorizontalAlignment="Center" Margin="0,290,0,0" VerticalAlignment="Top" Height="40" Width="100" FontSize="20"
                 IsEnabled="{Binding CanRegister, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" 
                 Command="{Binding Register, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 

@@ -56,13 +56,13 @@ namespace ShopManager.DAL.Entities
         #region Methods
         public override string ToString()
         {
-            return $"{Login}: {Password}, {Name} {Surname}: {Email}, {Phone}";
+            return $"{Login}, {Password}, {Name}, {Surname}, {Email}, {Phone}";
         }
 
         // Generate string for INSERT TO (name, surname, email, phone) !Do aktualizacji!
         public string ToInsert()
         {
-            return $"('{Login}: {Password}, {Name}', '{Surname}', {Email},'{Phone}')";
+            return $"('{Login}', '{Password}', '{Name}', '{Surname}', '{Email}','{Phone}')";
         }
         // Check if the object exists
         public override bool Equals(object obj)

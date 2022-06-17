@@ -16,7 +16,9 @@
             <vw:StartControl RegisterUser="{Binding RegisterUserClick}" LoginRoot="{Binding LoginRootClick}" LoginUser="{Binding LoginUserClick}"/>
         </Grid>
         <Grid Visibility="{Binding registerWindowViewModel.isVisible}">
-            <vw:RegisterControl BackButton="{Binding RegisterBackButton}" Register="{Binding RegisterUser}" 
+            <vw:RegisterControl BackButton="{Binding RegisterBackButton}" Register="{Binding RegisterUser}"
+                                Firstname="{Binding registerWindowViewModel.firstName, Mode=TwoWay}"
+                                Surname="{Binding registerWindowViewModel.surname, Mode=TwoWay}"
                                 Login="{Binding registerWindowViewModel.login, Mode=TwoWay}"
                                 Password="{Binding registerWindowViewModel.password, Mode=TwoWay}" RepeatPassword="{Binding registerWindowViewModel.repeatPassword, Mode=TwoWay}"
                                 PhoneNumber="{Binding registerWindowViewModel.phoneNumber, Mode=TwoWay}" EmailAddress="{Binding registerWindowViewModel.emailAddress, Mode=TwoWay}"

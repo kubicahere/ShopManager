@@ -13,7 +13,7 @@ namespace ShopManager.DAL.Repositories
     {
         #region Queries
         private const string ALL_CLIENTS = "SELECT * FROM client";
-        private const string ADD_CLIENT = "INSERT INTO `client`(`name`, `surname`, `email`, `phone`) VALUES ";
+        private const string ADD_CLIENT = "INSERT INTO `client`(`login`, `passwd`, `name`, `surname`, `email`, `phone`) VALUES ";
 
         public static Client GetClientByLoginAndPasswd(string login, string password)
         {

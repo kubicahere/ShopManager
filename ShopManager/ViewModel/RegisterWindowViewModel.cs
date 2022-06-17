@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ShopManager.DAL.Entities;
 using System.Windows;
 using System.Text.RegularExpressions;
+using ShopManager.DAL.Repositories;
 
 namespace ShopManager.ViewModel
 {
@@ -162,7 +163,10 @@ namespace ShopManager.ViewModel
             if (!CheckData()) return;
             canRegister = "False";
             var user = new Client(login, password, firstName, surname, emailAddress, phoneNumber);
-            //TODO ADD CLIENT TO DB
+            if(RepoClients.AddClient(user))
+            {
+                ClearData();
+            }
         }
 
         #endregion

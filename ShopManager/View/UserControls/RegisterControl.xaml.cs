@@ -31,6 +31,12 @@ namespace ShopManager.View.UserControls
         public static readonly DependencyProperty RegisterProperty = DependencyProperty.Register(
             "Register", typeof(ICommand), typeof(RegisterControl), new FrameworkPropertyMetadata(null)
             );
+        public static readonly DependencyProperty FirstnameProperty = DependencyProperty.Register(
+            "Firstname", typeof(string), typeof(RegisterControl), new FrameworkPropertyMetadata(null)
+            );
+        public static readonly DependencyProperty SurnameProperty = DependencyProperty.Register(
+            "Surname", typeof(string), typeof(RegisterControl), new FrameworkPropertyMetadata(null)
+            );
         public static readonly DependencyProperty LoginProperty = DependencyProperty.Register(
             "Login", typeof(string), typeof(RegisterControl), new FrameworkPropertyMetadata(null)
             );
@@ -61,7 +67,16 @@ namespace ShopManager.View.UserControls
             get { return (ICommand)GetValue(RegisterProperty); }
             set { SetValue(RegisterProperty, value); }
         }
-
+        public string Firstname
+        {
+            get { return (string)GetValue(FirstnameProperty); }
+            set { SetValue(FirstnameProperty, value); }
+        }
+        public string Surname
+        {
+            get { return (string)GetValue(SurnameProperty); }
+            set { SetValue(SurnameProperty, value); }
+        }
         public string Login
         {
             get { return (string)GetValue(LoginProperty); }
