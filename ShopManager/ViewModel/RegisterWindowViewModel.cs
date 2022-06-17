@@ -15,10 +15,10 @@ namespace ShopManager.ViewModel
     {
         public StartWindowViewModel startWindow { get; set; }
         public MainViewModel mainVM { get; set; }
-        public MainModel mainModel { get; set; }
+        public User mainModel { get; set; }
         public RegisterWindowViewModel()
         {
-            mainModel = new MainModel();
+            mainModel = new User();
             //TODO LOAD LIST OF USERS FROM DB
         }
         #region Attributes
