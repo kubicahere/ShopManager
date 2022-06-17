@@ -19,7 +19,19 @@ namespace ShopManager.ViewModel
         private ObservableCollection<Purchase> _listOfPurchases;
         private string _selectedProduct = null;
 
-        
+
         #endregion
+
+        #region Methods
+        public void logUser(object sender)
+        {
+
+        }
+        public void goBack(object sender)
+        {
+
+        }
+        #endregion
+
     }
 }

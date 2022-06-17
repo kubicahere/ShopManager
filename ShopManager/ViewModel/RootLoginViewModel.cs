@@ -49,7 +49,7 @@ namespace ShopManager.ViewModel
                 return false;
             return true;
         }
-        public void LoginRoot()
+        public void LoginRoot(object sender)
         {
             if(!CheckData())
             {

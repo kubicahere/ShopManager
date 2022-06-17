@@ -126,7 +126,7 @@ namespace ShopManager.ViewModel
             phoneNumber = string.Empty; 
             emailAddress = string.Empty;    
         }
-        public void SetStartWindow(object sender)
+        public void BackButton(object sender)
         {
             ClearData();
             canRegister = "True";
