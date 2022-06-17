@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:ShopManager.View.Windows"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:vm="clr-namespace:ShopManager.ViewModel" xmlns:vw="clr-namespace:ShopManager.View.UserControls"
-                 mc:Ignorable="d"
-        Title="Shop Manager" Height="350" Width="450">
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="Shop Manager" Height="400" Width="450">
     <Window.Resources>
         <vm:MainViewModel x:Key="viewModel"/>
     </Window.Resources>
