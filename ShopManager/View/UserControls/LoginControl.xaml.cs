@@ -62,14 +62,14 @@ namespace ShopManager.View.UserControls
         #endregion
         #region Events
         public static readonly RoutedEvent BackButtonClickEvent = 
-            EventManager.RegisterRoutedEvent("OtherBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
+            EventManager.RegisterRoutedEvent("OtherUserBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
         public event RoutedEventHandler BackButtonClick
         {
             add { AddHandler(BackButtonClickEvent, value); }
             remove { RemoveHandler(BackButtonClickEvent, value); }
         }
         public static readonly RoutedEvent LogClickEvent =
-            EventManager.RegisterRoutedEvent("OtherLogClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
+            EventManager.RegisterRoutedEvent("OtherUserLogClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
         public event RoutedEventHandler LogClick
         {
             add { AddHandler(LogClickEvent, value); }

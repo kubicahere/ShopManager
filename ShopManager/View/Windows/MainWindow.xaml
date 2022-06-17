@@ -5,9 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopManager.View.Windows"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        mc:Ignorable="d"
-        Title="Shop Manager" Height="450" Width="800">
-    <Grid>
-
+        xmlns:vm="clr-namespace:ShopManager.ViewModel" xmlns:vw="clr-namespace:ShopManager.View.UserControls"
+                 mc:Ignorable="d"
+        Title="Shop Manager" Height="350" Width="450">
+    <Window.Resources>
+        <vm:MainViewModel x:Key="viewModel"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource viewModel}">
+        <Grid Visibility="{Binding startWindowViewModel.isVisible}">
+            <vw:StartControl RegisterUser="{Binding RegisterUserClick}" LoginRoot="{Binding LoginRootClick}" LoginUser="{Binding LoginUserClick}"/>
+        </Grid>
+        <Grid Visibility="{Binding registerWindowViewModel.isVisible}">
+            <vw:RegisterControl BackButton="{Binding RegisterBackButton}" Register="{Binding RegisterUser}" 
+                                Login="{Binding registerWindowViewModel.login, Mode=TwoWay}"
+                                Password="{Binding registerWindowViewModel.password, Mode=TwoWay}" RepeatPassword="{Binding registerWindowViewModel.repeatPassword, Mode=TwoWay}"
+                                PhoneNumber="{Binding registerWindowViewModel.phoneNumber, Mode=TwoWay}" EmailAddress="{Binding registerWindowViewModel.emailAddress, Mode=TwoWay}"
+                                CanRegister="{Binding registerWindowViewModel.canRegister}"/>
+        </Grid>
+        <!--BUGGED BACK BUTTON-->
+        <Grid Visibility="{Binding rootLoginViewModel.isVisible}">
+            <vw:RootLoginControl BackButton="{Binding RootBackButton}" Log="{Binding LoginRoot}"
+                                  Login="{Binding rootLoginViewModel.login, Mode=TwoWay}" Password="{Binding rootLoginViewModel.password, Mode=TwoWay}"/>
+        </Grid>
+        
+        <Grid Visibility="{Binding userLoginViewModel.isVisible}">
+            <vw:LoginControl BackButton="{Binding UserBackButton}" Log="{Binding LoginUser}"
+                                 Login="{Binding userLoginViewModel.login, Mode=TwoWay}" Password="{Binding userLoginViewModel.password, Mode=TwoWay}"/>
+        </Grid>
     </Grid>
 </mah:MetroWindow>

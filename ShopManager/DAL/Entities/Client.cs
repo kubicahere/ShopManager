@@ -20,6 +20,7 @@ namespace ShopManager.DAL.Entities
         #endregion
 
         #region Constructors
+        public Client() { }
         public Client(MySqlDataReader reader)
         {
             Id = sbyte.Parse(reader["id"].ToString());

@@ -95,7 +95,7 @@ namespace ShopManager.View.UserControls
         #endregion
         #region Events
         public static readonly RoutedEvent BackButtonClickEvent =
-            EventManager.RegisterRoutedEvent("OtherBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RegisterControl));
+            EventManager.RegisterRoutedEvent("OtherRegisterBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RegisterControl));
         public event RoutedEventHandler BackButtonClick
         {
             add { AddHandler(BackButtonClickEvent, value); }

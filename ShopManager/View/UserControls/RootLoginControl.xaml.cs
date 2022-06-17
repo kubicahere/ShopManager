@@ -23,16 +23,16 @@ namespace ShopManager.View.UserControls
         }
         #region Dependencies
         public static readonly DependencyProperty BackButtonProperty = DependencyProperty.Register(
-            "BackButton", typeof(ICommand), typeof(LoginControl), new FrameworkPropertyMetadata(null)
+            "BackButton", typeof(ICommand), typeof(RootLoginControl), new FrameworkPropertyMetadata(null)
             );
         public static readonly DependencyProperty LogProperty = DependencyProperty.Register(
-            "Log", typeof(ICommand), typeof(LoginControl), new FrameworkPropertyMetadata(null)
+            "Log", typeof(ICommand), typeof(RootLoginControl), new FrameworkPropertyMetadata(null)
             );
         public static readonly DependencyProperty LoginProperty = DependencyProperty.Register(
-            "Login", typeof(string), typeof(LoginControl), new FrameworkPropertyMetadata(null)
+            "Login", typeof(string), typeof(RootLoginControl), new FrameworkPropertyMetadata(null)
             );
         public static readonly DependencyProperty PasswordProperty = DependencyProperty.Register(
-            "Password", typeof(string), typeof(LoginControl), new FrameworkPropertyMetadata(null)
+            "Password", typeof(string), typeof(RootLoginControl), new FrameworkPropertyMetadata(null)
             );
         #endregion
         #region Getters & setters
@@ -59,14 +59,14 @@ namespace ShopManager.View.UserControls
         #endregion
         #region Events
         public static readonly RoutedEvent BackButtonClickEvent =
-            EventManager.RegisterRoutedEvent("OtherBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
+            EventManager.RegisterRoutedEvent("OtherRootBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
         public event RoutedEventHandler BackButtonClick
         {
             add { AddHandler(BackButtonClickEvent, value); }
             remove { RemoveHandler(BackButtonClickEvent, value); }
         }
         public static readonly RoutedEvent LogClickEvent =
-            EventManager.RegisterRoutedEvent("OtherLogClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
+            EventManager.RegisterRoutedEvent("OtherRootLogClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LoginControl));
         public event RoutedEventHandler LogClick
         {
             add { AddHandler(LogClickEvent, value); }

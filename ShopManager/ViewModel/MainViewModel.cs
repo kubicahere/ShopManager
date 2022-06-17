@@ -42,10 +42,11 @@ namespace ShopManager.ViewModel
             startWindowViewModel.RootLogin = rootLoginViewModel;
             registerWindowViewModel.startWindow = startWindowViewModel;
             registerWindowViewModel.mainModel = userModel;
-            //rootLoginViewModel.
-            //rootLoginViewModel.
-            //userLoginViewModel.
-            //userLoginViewModel.
+            rootLoginViewModel.startWindow = startWindowViewModel;
+            rootLoginViewModel.viewModel = this;
+            userLoginViewModel.startWindow = startWindowViewModel;
+            userLoginViewModel.viewModel = this;
+            
         }
         #region ICommand StartControl
         private ICommand _registerUserClick = null;
@@ -93,19 +94,19 @@ namespace ShopManager.ViewModel
             {
                 if(_loginUser == null)
                 {
-                    _loginUser = new RelayCommand(userLoginViewModel.logUser, arg => true);
+                    _loginUser = new RelayCommand(userLoginViewModel.LoginUser, arg => true);
                 }
                 return _loginUser;
             }
         }
         private ICommand _userBackButton = null;
-        public ICommand BackButton
+        public ICommand UserBackButton
         {
             get
             {
                 if(_userBackButton == null)
                 {
-                    _userBackButton = new RelayCommand(userLoginViewModel.goBack, arg => true);
+                    _userBackButton = new RelayCommand(userLoginViewModel.BackButton, arg => true);
                 }
                 return _userBackButton;
             }
@@ -152,7 +153,7 @@ namespace ShopManager.ViewModel
         }
 
         private ICommand _registerBackButton = null;
-        public ICommand RegistertBackButton
+        public ICommand RegisterBackButton
         {
             get
             {

@@ -14,6 +14,22 @@ namespace ShopManager.DAL.Repositories
         #region Queries
         private const string ALL_CLIENTS = "SELECT * FROM client";
         private const string ADD_CLIENT = "INSERT INTO `client`(`name`, `surname`, `email`, `phone`) VALUES ";
+
+        public static Client GetClientByLoginAndPasswd(string login, string password)
+        {
+            string TARGET_CLIENT = ALL_CLIENTS + $" WHERE LOGIN = '{login}' AND PASSWD = '{password}'";
+            Client user = new Client();
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand(TARGET_CLIENT, connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                    user = new Client(reader);
+                connection.Close();
+            }
+            return user;
+        }
         #endregion
 
         #region CRUD Methods

@@ -31,9 +31,9 @@ namespace ShopManager.ViewModel
         #endregion
 
         #region ViewModel instances
-        StartWindowViewModel startWindow { get; set; } = new StartWindowViewModel();
-        MainWindow mainWindow { get; set; }
-        MainViewModel viewModel { get; set; } = new MainViewModel();
+        public StartWindowViewModel startWindow { get; set; }
+        public RootMainWindow rootMainWindow { get; set; }
+        public MainViewModel viewModel { get; set; }
 
         #endregion
 
@@ -56,9 +56,9 @@ namespace ShopManager.ViewModel
                 ClearData();
                 return;
             }
-            MainWindow rootWindow = new MainWindow();
-            rootWindow.DataContext = this;
-            rootWindow.Show();
+            rootMainWindow = new RootMainWindow();
+            rootMainWindow.DataContext = this;
+            rootMainWindow.Show();
             ClearData();
         }
         public void BackButton(object sender)
