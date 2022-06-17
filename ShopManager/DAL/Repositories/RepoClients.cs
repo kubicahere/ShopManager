@@ -50,7 +50,7 @@ namespace ShopManager.DAL.Repositories
             bool state = false;
             using (var connection = DBConnection.Instance.Connection)
             {
-                string EDIT_CLIENT = $"UPDATE client SET name='{client.Name}', nazwisko='{client.Surname}', " +
+                string EDIT_CLIENT = $"UPDATE client SET login='{client.Login}', password='{client.Password}', name='{client.Name}', nazwisko='{client.Surname}', " +
                     $"email={client.Email}, phone='{client.Phone}' WHERE id={ClientID}";
 
                 MySqlCommand command = new MySqlCommand(EDIT_CLIENT, connection);
