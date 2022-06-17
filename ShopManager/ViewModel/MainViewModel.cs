@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace ShopManager.ViewModel
 {
-    internal class MainViewModel
+    class MainViewModel
     {
+        #region Attributes
+
+        #endregion
+
+        #region Getters & setters
+
+        #endregion
+
+        #region ViewModel instances
+        RegisterWindowViewModel registerWIndowV
+        #endregion
+
+        #region Methods
+
+        #endregion
     }
 }

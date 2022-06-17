@@ -19,6 +19,7 @@ namespace ShopManager.ViewModel
         private ObservableCollection<Purchase> _listOfPurchases;
         private string _selectedProduct = null;
 
+        
         #endregion
     }
 }
