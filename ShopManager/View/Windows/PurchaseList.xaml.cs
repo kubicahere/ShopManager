@@ -1,5 +1,4 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,18 +16,13 @@ using System.Windows.Shapes;
 namespace ShopManager.View.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika interakcji dla klasy PurchaseList.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class PurchaseList : Page
     {
-        public MainWindow()
+        public PurchaseList()
         {
             InitializeComponent();
-        }
-
-        private void LoginControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
