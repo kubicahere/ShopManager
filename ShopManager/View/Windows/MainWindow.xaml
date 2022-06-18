@@ -33,7 +33,7 @@
         
         <Grid Visibility="{Binding userLoginViewModel.isVisible}">
             <vw:LoginControl BackButton="{Binding UserBackButton}" Log="{Binding LoginUser}"
-                                 Login="{Binding userLoginViewModel.login, Mode=TwoWay}" Password="{Binding userLoginViewModel.password, Mode=TwoWay}"/>
+                                 Login="{Binding userLoginViewModel.login, Mode=TwoWay}" Password="{Binding userLoginViewModel.password, Mode=TwoWay}" Loaded="LoginControl_Loaded"/>
         </Grid>
     </Grid>
 </mah:MetroWindow>
