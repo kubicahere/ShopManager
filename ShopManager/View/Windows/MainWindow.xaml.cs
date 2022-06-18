@@ -25,10 +25,5 @@ namespace ShopManager.View.Windows
         {
             InitializeComponent();
         }
-
-        private void LoginControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
