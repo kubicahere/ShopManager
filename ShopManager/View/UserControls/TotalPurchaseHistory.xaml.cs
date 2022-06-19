@@ -18,9 +18,9 @@ namespace ShopManager.View.UserControls
     /// <summary>
     /// Logika interakcji dla klasy PurchaseList.xaml
     /// </summary>
-    public partial class PurchaseList : UserControl
+    public partial class TotalPurchaseHistory : UserControl
     {
-        public PurchaseList()
+        public TotalPurchaseHistory()
         {
             InitializeComponent();
         }

@@ -9,11 +9,28 @@ using System.Threading.Tasks;
 namespace ShopManager.DAL.Repositories
 {
     using Entities;
+    using System.Collections.ObjectModel;
+
     static class RepoPurchases
     {
         #region Queries
         private const string ALL_PURCHASE = "SELECT * FROM purchase";
         private const string ADD_PURCHASE = "INSERT INTO `purchase`(`purchase_date`, `product_code`, `client_id`, 'employee_id') VALUES ";
+        public static ObservableCollection<Purchase> GetClientPurchasesById(Client client)
+        {
+            ObservableCollection<Purchase> purchases = new ObservableCollection<Purchase>();
+            string CLIENT_PURCHASE = $"SELECT * FROM purchase WHERE client_id={client.Id}";
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand(CLIENT_PURCHASE, connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                    purchases.Add(new Purchase(reader));
+                connection.Close();
+            }
+            return purchases;
+        }
         #endregion
 
         #region CRUD Methods

@@ -11,6 +11,23 @@ namespace ShopManager.Model
 {
     class User
     {
-        
+        #region Getters & setters
+        public ObservableCollection<Product> listOfProducts { get; set; } = new ObservableCollection<Product>();
+        public ObservableCollection<Purchase> listOfPurchases { get; set; } = new ObservableCollection<Purchase>();
+        #endregion
+        public User()
+        {
+            var products = RepoProducts.GetAllProducts();
+            foreach(var product in products)
+            {
+                listOfProducts.Add(product);
+            }
+            //var purchases = RepoPurchases.GetClientPurchasesById(client);
+            //foreach(var purchase in purchases)
+            //{
+            //    listOfPurchases.Add(purchase);
+            //}
+        }
+
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopManager.DAL.Entities
 {
-    class Purchase
+    public class Purchase
     {
         #region Properties
         public sbyte? Id { get; set; }
@@ -42,6 +42,7 @@ namespace ShopManager.DAL.Entities
             ProductCode = purchase.ProductCode;
             PurchaseDate = purchase.PurchaseDate;
         }
+        public Purchase() { }
         #endregion
 
         #region Methods

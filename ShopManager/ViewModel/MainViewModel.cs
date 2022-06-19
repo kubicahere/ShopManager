@@ -216,5 +216,29 @@ namespace ShopManager.ViewModel
         }
 
         #endregion
+        private ICommand _purchaseBackButton = null;
+        public ICommand purchaseBackButton
+        {
+            get
+            {
+                if(_purchaseBackButton == null)
+                {
+                    _purchaseBackButton = new RelayCommand(userLoginViewModel.PurchaseBackButton, arg => true);
+                }
+                return _purchaseBackButton;
+            }
+        }
+        private ICommand _selectedPurchaseList = null;
+        public ICommand selectedPurchaseListClick
+        {
+            get
+            {
+                if (_selectedPurchaseList == null)
+                {
+                    _selectedPurchaseList = new RelayCommand(userLoginViewModel.PurchaseListChanged, arg => true);
+                }
+                return _selectedPurchaseList;
+            }
+        }
     }
 }
