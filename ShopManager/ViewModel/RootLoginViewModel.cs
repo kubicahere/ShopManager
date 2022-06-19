@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ShopManager.ViewModel
 {
@@ -24,6 +25,10 @@ namespace ShopManager.ViewModel
         private string _isVisibleProducts = "Hidden";
         private string _isVisibleWorkersList = "Hidden";
         private string _isVisiblePurchaseList = "Hidden";
+        //workers list
+        private ObservableCollection<Employee> _listOfWorkers = new ObservableCollection<Employee>();
+        private string _selectedWorker = string.Empty;
+        private ObservableCollection<string> _listOfInfo = new ObservableCollection<string>();
         #endregion
 
         #region Getters & setters
@@ -37,6 +42,9 @@ namespace ShopManager.ViewModel
         public string isVisibleProducts { get { return _isVisibleProducts; } set { _isVisibleProducts = value; OnPropertyChanged(nameof(isVisibleProducts)); } }
         public string isVisibleWorkersList { get { return _isVisibleWorkersList; } set { _isVisibleWorkersList = value; OnPropertyChanged(nameof(isVisibleWorkersList)); } }
         public string isVisiblePurchaseList { get { return _isVisiblePurchaseList; } set { _isVisiblePurchaseList = value; OnPropertyChanged(nameof(isVisiblePurchaseList)); } }
+        public ObservableCollection<Employee> listOfWorkers { get { return _listOfWorkers; } set { _listOfWorkers = value; OnPropertyChanged(nameof(listOfWorkers)); } }
+        public string selectedWorker { get { return _selectedWorker; } set { _selectedWorker = value; OnPropertyChanged(nameof(selectedWorker)); } }
+        public ObservableCollection<string> listOfInfo { get { return _listOfInfo; } set { _listOfInfo = value; OnPropertyChanged(nameof(listOfInfo)); } }
         #endregion
 
         #region ViewModel instances
@@ -98,6 +106,21 @@ namespace ShopManager.ViewModel
             isVisiblePurchaseList = "Visible";
         }
         #endregion
-
+        #region Workers list window methods
+        public void LoadWorkers(object sender)
+        {
+            _listOfWorkers.Clear();
+            //TODO
+        }
+        public void WorkersBackButton(object sender)
+        {
+            isVisibleRootWindow = "Hidden";
+            isVisibleWorkersList = "Visible";
+        }
+        public void PurchaseListChanged(object sender)
+        {
+            MessageBox.Show("LIST CHANGED");
+        }
+        #endregion
     }
 }

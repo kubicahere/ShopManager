@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopManager.DAL.Entities
 {
-    class Employee
+    public class Employee
     {
         #region Properties
         public sbyte? Id { get; set; }

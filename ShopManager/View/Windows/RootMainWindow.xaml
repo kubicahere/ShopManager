@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopManager.View.UserControls" xmlns:com="clr-namespace:ShopManager.Components" 
-             xmlns:vm="clr-namespace:ShopManager.ViewModel"
+             xmlns:vm="clr-namespace:ShopManager.ViewModel" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="450">
     <Window.Resources>
@@ -16,6 +16,15 @@
                                AddProducts="{Binding viewModel.addProduct}" 
                                ShowWorkersList="{Binding viewModel.showWorkers}" 
                                ShowPurchaseList="{Binding viewModel.showPurchases}"/>
+        </Grid>
+        <Grid Visibility="{Binding isVisibleWorkersList}">
+            <local:WorkersList BackButton="{Binding viewModel.purchaseBackButton}" WorkerList="{Binding listOfTransactions, Mode=TwoWay}" SingleSelectedItem="{Binding selectedTransaction, Mode=TwoWay}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PurchaseListItemChanged">
+                        <i:InvokeCommandAction Command="{Binding viewModel.purchaseSelectedItem}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </local:WorkersList>
         </Grid>
     </Grid>
 </Window>
