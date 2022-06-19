@@ -293,5 +293,31 @@ namespace ShopManager.ViewModel
             }
         }
         #endregion
+        #region ICommand WorkersList
+        private ICommand _workersBackButton = null;
+        public ICommand workersBackButton
+        {
+            get
+            {
+                if (_workersBackButton == null)
+                {
+                    _workersBackButton = new RelayCommand(rootLoginViewModel.WorkersBackButton, arg => true);
+                }
+                return _workersBackButton;
+            }
+        }
+        private ICommand _workersSelectedItem = null;
+        public ICommand workersSelectedItem
+        {
+            get
+            {
+                if (_workersSelectedItem == null)
+                {
+                    _workersSelectedItem = new RelayCommand(rootLoginViewModel.WorkersListChanged, arg => true);
+                }
+                return _workersSelectedItem;
+            }
+        }
+        #endregion
     }
 }

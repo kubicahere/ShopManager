@@ -18,10 +18,10 @@
                                ShowPurchaseList="{Binding viewModel.showPurchases}"/>
         </Grid>
         <Grid Visibility="{Binding isVisibleWorkersList}">
-            <local:WorkersList BackButton="{Binding viewModel.purchaseBackButton}" WorkerList="{Binding listOfTransactions, Mode=TwoWay}" SingleSelectedItem="{Binding selectedTransaction, Mode=TwoWay}">
+            <local:WorkersList BackButton="{Binding viewModel.workersBackButton}" WorkerList="{Binding listOfWorkers, Mode=TwoWay}" SingleSelectedItem="{Binding selectedWorker, Mode=TwoWay}">
                 <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="PurchaseListItemChanged">
-                        <i:InvokeCommandAction Command="{Binding viewModel.purchaseSelectedItem}"></i:InvokeCommandAction>
+                    <i:EventTrigger EventName="WorkersListItemChanged">
+                        <i:InvokeCommandAction Command="{Binding viewModel.workersSelectedItem}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </local:WorkersList>

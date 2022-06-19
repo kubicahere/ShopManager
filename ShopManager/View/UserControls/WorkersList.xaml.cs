@@ -31,7 +31,7 @@ namespace ShopManager.View.UserControls
            "BackButton", typeof(ICommand), typeof(WorkersList), new FrameworkPropertyMetadata(null)
            );
         public static readonly DependencyProperty WorkersListProperty = DependencyProperty.Register(
-           "WorkerList", typeof(ObservableCollection<Employee>), typeof(WorkersList), new FrameworkPropertyMetadata(null)
+           "WorkerList", typeof(List<String>), typeof(WorkersList), new FrameworkPropertyMetadata(null)
            );
         public static readonly DependencyProperty SingleSelectedItemProperty = DependencyProperty.Register(
            "SingleSelectedItem", typeof(string), typeof(WorkersList), new FrameworkPropertyMetadata(null)
@@ -43,9 +43,9 @@ namespace ShopManager.View.UserControls
             get { return (ICommand)GetValue(BackButtonProperty); }
             set { SetValue(BackButtonProperty, value); }
         }
-        public ObservableCollection<Employee> WorkerList
+        public List<string> WorkerList
         {
-            get { return (ObservableCollection<Employee>)GetValue(WorkersListProperty); }
+            get { return (List<string>)GetValue(WorkersListProperty); }
             set { SetValue(WorkersListProperty, value); }
         }
         public string SingleSelectedItem
@@ -70,12 +70,12 @@ namespace ShopManager.View.UserControls
         }
         public static readonly RoutedEvent WorkersListItemChangedEvent =
             EventManager.RegisterRoutedEvent("PurchaseListItemChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(WorkersList));
-        public event RoutedEventHandler PurchaseListItemChanged
+        public event RoutedEventHandler WorkersListItemChanged
         {
             add { AddHandler(WorkersListItemChangedEvent, value); }
             remove { RemoveHandler(WorkersListItemChangedEvent, value); }
         }
-        void RaisePurchaseListItemChanged(object sender, SelectionChangedEventArgs e)
+        void RaiseWorkersListItemChanged(object sender, SelectionChangedEventArgs e)
         {
             RoutedEventArgs args = new RoutedEventArgs(WorkersListItemChangedEvent);
             RaiseEvent(args);

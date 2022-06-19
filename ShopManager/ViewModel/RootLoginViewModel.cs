@@ -1,4 +1,5 @@
 ﻿using ShopManager.DAL.Entities;
+using ShopManager.DAL.Repositories;
 using ShopManager.View.Windows;
 using ShopManager.ViewModel.Base;
 using System;
@@ -26,7 +27,7 @@ namespace ShopManager.ViewModel
         private string _isVisibleWorkersList = "Hidden";
         private string _isVisiblePurchaseList = "Hidden";
         //workers list
-        private ObservableCollection<Employee> _listOfWorkers = new ObservableCollection<Employee>();
+        private List<string> _listOfWorkers = new List<string>();
         private string _selectedWorker = string.Empty;
         private ObservableCollection<string> _listOfInfo = new ObservableCollection<string>();
         #endregion
@@ -42,7 +43,7 @@ namespace ShopManager.ViewModel
         public string isVisibleProducts { get { return _isVisibleProducts; } set { _isVisibleProducts = value; OnPropertyChanged(nameof(isVisibleProducts)); } }
         public string isVisibleWorkersList { get { return _isVisibleWorkersList; } set { _isVisibleWorkersList = value; OnPropertyChanged(nameof(isVisibleWorkersList)); } }
         public string isVisiblePurchaseList { get { return _isVisiblePurchaseList; } set { _isVisiblePurchaseList = value; OnPropertyChanged(nameof(isVisiblePurchaseList)); } }
-        public ObservableCollection<Employee> listOfWorkers { get { return _listOfWorkers; } set { _listOfWorkers = value; OnPropertyChanged(nameof(listOfWorkers)); } }
+        public List<string> listOfWorkers { get { return _listOfWorkers; } set { _listOfWorkers = value; OnPropertyChanged(nameof(listOfWorkers)); } }
         public string selectedWorker { get { return _selectedWorker; } set { _selectedWorker = value; OnPropertyChanged(nameof(selectedWorker)); } }
         public ObservableCollection<string> listOfInfo { get { return _listOfInfo; } set { _listOfInfo = value; OnPropertyChanged(nameof(listOfInfo)); } }
         #endregion
@@ -53,7 +54,12 @@ namespace ShopManager.ViewModel
         public MainViewModel viewModel { get; set; }
 
         #endregion
-
+        public RootLoginViewModel()
+        {
+            listOfWorkers.Add("X");
+            listOfWorkers.Add("X");
+            listOfWorkers.Add("X");
+        }
         #region Methods
         public void ClearData()
         {
@@ -109,15 +115,19 @@ namespace ShopManager.ViewModel
         #region Workers list window methods
         public void LoadWorkers(object sender)
         {
-            _listOfWorkers.Clear();
-            //TODO
+            listOfWorkers.Clear();
+            List<Employee> tmp = RepoEmployees.GetAllEmployees();
+            for(int i = 0; i < tmp.Count; i++)
+            {
+                listOfWorkers.Add($"Employee: {tmp[i].ToString}");
+            }
         }
         public void WorkersBackButton(object sender)
         {
-            isVisibleRootWindow = "Hidden";
-            isVisibleWorkersList = "Visible";
+            isVisibleRootWindow = "Visible";
+            isVisibleWorkersList = "Hidden";
         }
-        public void PurchaseListChanged(object sender)
+        public void WorkersListChanged(object sender)
         {
             MessageBox.Show("LIST CHANGED");
         }
