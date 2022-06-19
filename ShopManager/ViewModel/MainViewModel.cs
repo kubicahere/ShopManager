@@ -216,29 +216,56 @@ namespace ShopManager.ViewModel
         }
 
         #endregion
-        private ICommand _purchaseBackButton = null;
-        public ICommand purchaseBackButton
+        #region ICommand RootStartup
+        private ICommand _logOutRoot = null;
+        public ICommand logOutRoot
         {
             get
             {
-                if(_purchaseBackButton == null)
+                if (_logOutRoot == null)
                 {
-                    _purchaseBackButton = new RelayCommand(userLoginViewModel.PurchaseBackButton, arg => true);
+                    _logOutRoot = new RelayCommand(rootLoginViewModel.LogOut, arg => true);
                 }
-                return _purchaseBackButton;
+                return _logOutRoot;
             }
         }
-        private ICommand _selectedPurchaseList = null;
-        public ICommand selectedPurchaseListClick
+        private ICommand _addProduct = null;
+        public ICommand addProduct
         {
             get
             {
-                if (_selectedPurchaseList == null)
+                if (_addProduct == null)
                 {
-                    _selectedPurchaseList = new RelayCommand(userLoginViewModel.PurchaseListChanged, arg => true);
+                    _addProduct = new RelayCommand(rootLoginViewModel.AddProducts, arg => true);
                 }
-                return _selectedPurchaseList;
+                return _addProduct;
             }
         }
+        private ICommand _showWorkers = null;
+        public ICommand showWorkers
+        {
+            get
+            {
+                if (_showWorkers == null)
+                {
+                    _showWorkers = new RelayCommand(rootLoginViewModel.WorkersList, arg => true);
+                }
+                return _showWorkers;
+            }
+        }
+        private ICommand _showPurchases = null;
+        public ICommand showPurchases
+        {
+            get
+            {
+                if (_showPurchases == null)
+                {
+                    _showPurchases = new RelayCommand(rootLoginViewModel.PurchaseList, arg => true);
+                }
+                return _showPurchases;
+            }
+        }
+
+        #endregion
     }
 }

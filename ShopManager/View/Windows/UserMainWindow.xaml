@@ -13,7 +13,10 @@
     </Window.Resources>
     <Grid>
         <Grid Visibility="{Binding isVisibleUserWindow}">
-            <local:UserStartup LogOut="{Binding viewModel.logOutClick}" Shopping="{Binding viewModel.shoppingClick}" PurchaseList="{Binding viewModel.purchaseHistoryClick}" AccountSettings="{Binding viewModel.accountSettingsClick}"/>
+            <local:UserStartup LogOut="{Binding viewModel.logOutClick}" 
+                               Shopping="{Binding viewModel.shoppingClick}" 
+                               PurchaseList="{Binding viewModel.purchaseHistoryClick}" 
+                               AccountSettings="{Binding viewModel.accountSettingsClick}"/>
         </Grid>
         <Grid Visibility="{Binding isVisiblePurchaseHistory}">
             <local:ClientPurchaseHistory BackButton="{Binding viewModel.purchaseBackButton}" PurchaseList="{Binding listOfTransactions, Mode=TwoWay}" SingleSelectedItem="{Binding selectedTransaction, Mode=TwoWay}">

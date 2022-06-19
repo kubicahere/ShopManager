@@ -26,24 +26,24 @@ namespace ShopManager.View.UserControls
         }
 
         #region Dependencies
-        public static readonly DependencyProperty LogOutProperty = DependencyProperty.Register(
-           "LogOut", typeof(ICommand), typeof(UserStartup), new FrameworkPropertyMetadata(null)
+        public static readonly DependencyProperty LogOutRootProperty = DependencyProperty.Register(
+           "LogOutRoot", typeof(ICommand), typeof(RootStartup), new FrameworkPropertyMetadata(null)
            );
         public static readonly DependencyProperty ProductsProperty = DependencyProperty.Register(
-            "AddProducts", typeof(ICommand), typeof(UserStartup), new FrameworkPropertyMetadata(null)
+            "AddProducts", typeof(ICommand), typeof(RootStartup), new FrameworkPropertyMetadata(null)
             );
         public static readonly DependencyProperty WorkersListProperty = DependencyProperty.Register(
-            "ShowWorkersList", typeof(ICommand), typeof(UserStartup), new FrameworkPropertyMetadata(null)
+            "ShowWorkersList", typeof(ICommand), typeof(RootStartup), new FrameworkPropertyMetadata(null)
             );
         public static readonly DependencyProperty PurchaseListProperty = DependencyProperty.Register(
-            "ShowPurchaseList", typeof(ICommand), typeof(UserStartup), new FrameworkPropertyMetadata(null)
+            "ShowPurchaseList", typeof(ICommand), typeof(RootStartup), new FrameworkPropertyMetadata(null)
             );
         #endregion
         #region Getters & setters
-        public ICommand LogOut
+        public ICommand LogOutRoot
         {
-            get { return (ICommand)GetValue(LogOutProperty); }
-            set { SetValue(LogOutProperty, value); }
+            get { return (ICommand)GetValue(LogOutRootProperty); }
+            set { SetValue(LogOutRootProperty, value); }
         }
         public ICommand AddProducts
         {
@@ -62,16 +62,16 @@ namespace ShopManager.View.UserControls
         }
         #endregion
         #region Events
-        public static readonly RoutedEvent LogOutClickEvent =
-            EventManager.RegisterRoutedEvent("OtherLogOutClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RootStartup));
+        public static readonly RoutedEvent LogOutRootClickEvent =
+            EventManager.RegisterRoutedEvent("LogOutRootClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RootStartup));
         public event RoutedEventHandler LogOutClick
         {
-            add { AddHandler(LogOutClickEvent, value); }
-            remove { RemoveHandler(LogOutClickEvent, value); }
+            add { AddHandler(LogOutRootClickEvent, value); }
+            remove { RemoveHandler(LogOutRootClickEvent, value); }
         }
-        void RaiseLogOutClick(object sender, SelectionChangedEventArgs e)
+        void RaiseLogOutRootClick(object sender, SelectionChangedEventArgs e)
         {
-            RoutedEventArgs args = new RoutedEventArgs(LogOutClickEvent);
+            RoutedEventArgs args = new RoutedEventArgs(LogOutRootClickEvent);
             RaiseEvent(args);
         }
         public static readonly RoutedEvent AddProductsClickEvent =
