@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace ShopManager.DAL.Repositories
 {
     using Entities;
+    using System.Windows;
+
     static class RepoClients
     {
         #region Queries
@@ -25,7 +27,11 @@ namespace ShopManager.DAL.Repositories
                 connection.Open();
                 var reader = command.ExecuteReader();
                 while (reader.Read())
+                {
                     user = new Client(reader);
+                    MessageBox.Show(user.ToString());
+                }
+                    
                 connection.Close();
             }
             return user;

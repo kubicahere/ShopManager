@@ -31,7 +31,7 @@ namespace ShopManager.View.UserControls
            "BackButton", typeof(ICommand), typeof(WorkersList), new FrameworkPropertyMetadata(null)
            );
         public static readonly DependencyProperty WorkersListProperty = DependencyProperty.Register(
-           "WorkerList", typeof(List<String>), typeof(WorkersList), new FrameworkPropertyMetadata(null)
+           "WorkerList", typeof(ObservableCollection<string>), typeof(WorkersList), new FrameworkPropertyMetadata(null)
            );
         public static readonly DependencyProperty SingleSelectedItemProperty = DependencyProperty.Register(
            "SingleSelectedItem", typeof(string), typeof(WorkersList), new FrameworkPropertyMetadata(null)
@@ -43,9 +43,9 @@ namespace ShopManager.View.UserControls
             get { return (ICommand)GetValue(BackButtonProperty); }
             set { SetValue(BackButtonProperty, value); }
         }
-        public List<string> WorkerList
+        public ObservableCollection<string> WorkerList
         {
-            get { return (List<string>)GetValue(WorkersListProperty); }
+            get { return (ObservableCollection<string>)GetValue(WorkersListProperty); }
             set { SetValue(WorkersListProperty, value); }
         }
         public string SingleSelectedItem

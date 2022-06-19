@@ -10,6 +10,7 @@ namespace ShopManager.DAL.Repositories
 {
     using Entities;
     using System.Collections.ObjectModel;
+    using System.Windows;
 
     static class RepoPurchases
     {
@@ -19,7 +20,8 @@ namespace ShopManager.DAL.Repositories
         public static ObservableCollection<Purchase> GetClientPurchasesById(Client client)
         {
             ObservableCollection<Purchase> purchases = new ObservableCollection<Purchase>();
-            string CLIENT_PURCHASE = $"SELECT * FROM purchase WHERE client_id={client.Id}";
+            string CLIENT_PURCHASE = $"SELECT * FROM purchase WHERE client_id='{Convert.ToInt32(client.Id)}'";
+            
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand(CLIENT_PURCHASE, connection);

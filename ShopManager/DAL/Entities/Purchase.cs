@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ShopManager.DAL.Entities
 {
-    public class Purchase
+    class Purchase
     {
         #region Properties
         public sbyte? Id { get; set; }
-        public sbyte? ClientID { get; set; }
+        public int? ClientID { get; set; }
         public sbyte? EmployeeID { get; set; }
         public string PurchaseDate { get; set; }
         public decimal ProductCode { get; set; }
@@ -26,7 +26,7 @@ namespace ShopManager.DAL.Entities
             PurchaseDate = reader["purchase_date"].ToString();
             ProductCode = decimal.Parse(reader["product_code"].ToString());
         }
-        public Purchase(sbyte client_id, sbyte employee_id, decimal product_code, string purchase_date)
+        public Purchase(int client_id, sbyte employee_id, decimal product_code, string purchase_date)
         {
             Id = null; // Add a proper default value
             PurchaseDate = purchase_date.Trim();

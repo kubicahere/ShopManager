@@ -83,7 +83,7 @@ namespace ShopManager.ViewModel
             userMainWindow = new UserMainWindow();
             userMainWindow.DataContext = this;
             userMainWindow.Show();
-            ClearData();
+            //ClearData();
         }
         public void BackButton(object sender)
         {
@@ -106,6 +106,7 @@ namespace ShopManager.ViewModel
         {
             isVisibleUserWindow = "Hidden";
             isVisiblePurchaseHistory = "Visible";
+            LoadCustomerPurchases(true);
         }
         public void AccountSettings(object sender)
         {
@@ -120,11 +121,15 @@ namespace ShopManager.ViewModel
         public void LoadCustomerPurchases(object sender)
         {
             listOfTransactions.Clear();
+            MessageBox.Show(login);
             Client singleClient = RepoClients.GetClientByLoginAndPasswd(login, password);
+            
             ObservableCollection<Purchase> clientPurchases = RepoPurchases.GetClientPurchasesById(singleClient);
+            
             for(int i = 0; i < clientPurchases.Count; i++)
             {
-                listOfTransactions.Add($"Order no.{clientPurchases[i].Id}");
+                MessageBox.Show(singleClient.ToString());
+                listOfTransactions.Add($"Order no.{clientPurchases[i].ToString()}");
             }
         }
         public void PurchaseBackButton(object sender)

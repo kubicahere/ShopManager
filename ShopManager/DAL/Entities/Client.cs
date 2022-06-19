@@ -10,7 +10,7 @@ namespace ShopManager.DAL.Entities
     class Client
     {
         #region Properties
-        public sbyte? Id { get; set; }
+        public int? Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
@@ -23,7 +23,7 @@ namespace ShopManager.DAL.Entities
         public Client() { }
         public Client(MySqlDataReader reader)
         {
-            Id = sbyte.Parse(reader["id"].ToString());
+            Id = int.Parse(reader["id"].ToString());
             Login = reader["login"].ToString();
             Password = reader["passwd"].ToString();
             Name = reader["name"].ToString();
@@ -56,7 +56,7 @@ namespace ShopManager.DAL.Entities
         #region Methods
         public override string ToString()
         {
-            return $"{Login}, {Password}, {Name}, {Surname}, {Email}, {Phone}";
+            return $" {Id}, {Login}, {Password}, {Name}, {Surname}, {Email}, {Phone}";
         }
 
         // Generate string for INSERT TO (name, surname, email, phone) !Do aktualizacji!
