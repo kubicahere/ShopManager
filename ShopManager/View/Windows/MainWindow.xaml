@@ -25,7 +25,6 @@
                                 PhoneNumber="{Binding registerWindowViewModel.phoneNumber, Mode=TwoWay}" EmailAddress="{Binding registerWindowViewModel.emailAddress, Mode=TwoWay}"
                                 CanRegister="{Binding registerWindowViewModel.canRegister}"/>
         </Grid>
-        <!--BUGGED BACK BUTTON-->
         <Grid Visibility="{Binding rootLoginViewModel.isVisible}">
             <vw:RootLoginControl BackButton="{Binding RootBackButton}" Log="{Binding LoginRoot}"
                                   Login="{Binding rootLoginViewModel.login, Mode=TwoWay}" Password="{Binding rootLoginViewModel.password, Mode=TwoWay}"/>
