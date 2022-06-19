@@ -8,11 +8,14 @@
         mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="450">
     <Window.Resources>
-        <vm:MainViewModel x:Key="viewModel"/>
+        <vm:UserLoginViewModel x:Key="viewModel"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource viewModel}">
-        <local:UserStartup LogOut="{Binding logOutClick}" Shopping="{Binding shoppingClick}" PurchaseList="{Binding purchaseHistoryClick}" AccountSettings="{Binding accountSettingsClick}"/>
+    <Grid>
+        <Grid Visibility="{Binding isVisibleUserWindow}">
+            <local:UserStartup LogOut="{Binding viewModel.logOutClick}" Shopping="{Binding viewModel.shoppingClick}" PurchaseList="{Binding viewModel.purchaseHistoryClick}" AccountSettings="{Binding viewModel.accountSettingsClick}"/>
+        </Grid>
     </Grid>
+   
 </Window>
 
     

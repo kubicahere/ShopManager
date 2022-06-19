@@ -21,6 +21,11 @@ namespace ShopManager.ViewModel
         private ObservableCollection<string> _listOfProducts;
         private ObservableCollection<Purchase> _listOfPurchases;
         private string _selectedProduct = null;
+        //VISIBILITY OF BUYING ETC
+        private string _isVisibleUserWindow = "Visible";
+        private string _isVisibleBuying = "Hidden";
+        private string _isVisiblePurchaseHistory = "Hidden";
+        private string _isVisibleAccountSettings = "Hidden";
         #endregion
         #region Getters & setters
         public string isVisible { get { return _isVisible; } set { _isVisible = value; OnPropertyChanged(nameof(isVisible)); } }
@@ -29,6 +34,10 @@ namespace ShopManager.ViewModel
         public ObservableCollection<string> listOfProducts { get { return _listOfProducts; } set { _listOfProducts = value; OnPropertyChanged(nameof(listOfProducts)); } }
         public ObservableCollection<Purchase> listOfPurchases { get { return _listOfPurchases; } set { _listOfPurchases = value; OnPropertyChanged(nameof(listOfPurchases)); } }
         public string selectedProduct { get { return _selectedProduct; } set { _selectedProduct = value; OnPropertyChanged(nameof(selectedProduct)); } }
+        public string isVisibleUserWindow { get { return _isVisibleUserWindow; } set { _isVisibleUserWindow = value; OnPropertyChanged(nameof(isVisibleUserWindow)); } }
+        public string isVisibleBuying { get { return _isVisibleBuying; } set { _isVisibleBuying = value; OnPropertyChanged(nameof(isVisibleBuying)); } }
+        public string isVisiblePurchaseHistory { get { return _isVisiblePurchaseHistory; } set { _isVisiblePurchaseHistory = value; OnPropertyChanged(nameof(isVisiblePurchaseHistory)); } }
+        public string isVisibleAccountSettings { get { return _isVisibleAccountSettings; } set { _isVisibleAccountSettings = value; OnPropertyChanged(nameof(isVisibleAccountSettings)); } }
 
         #endregion
         public StartWindowViewModel startWindow { get; set; }
@@ -71,19 +80,22 @@ namespace ShopManager.ViewModel
         #region Window methods
         public void LogOut(object sender)
         {
-            MessageBox.Show("LogOut");
+            userMainWindow.Close();
         }
         public void GoShopping(object sender)
         {
-            MessageBox.Show("GoShopping");
+            isVisibleUserWindow = "Hidden";
+            isVisibleBuying = "Visible";
         }
         public void PurchaseHistory(object sender)
         {
-            MessageBox.Show("Purchase History");
+            isVisibleUserWindow = "Hidden";
+            isVisiblePurchaseHistory = "Visible";
         }
         public void AccountSettings(object sender)
         {
-            MessageBox.Show("Account Settings");
+            isVisibleUserWindow = "Hidden";
+            isVisibleAccountSettings = "Visible";
         }
         #endregion
     }
