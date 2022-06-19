@@ -3,13 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ShopManager.View.UserControls" xmlns:com="clr-namespace:ShopManager.Components"
-             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:ShopManager.View.UserControls" xmlns:com="clr-namespace:ShopManager.Components" 
+             xmlns:vm="clr-namespace:ShopManager.ViewModel"
+        mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="450">
+    <Window.Resources>
+        <vm:RootLoginViewModel x:Key="viewModel"/>
+    </Window.Resources>
     <Grid>
-        <Button Content="Sign out" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Height="25"/>
-        <Button Content="ADD PRODUCTS" HorizontalAlignment="Center" Margin="0,106,0,0" VerticalAlignment="Top" Height="40" Width="250" FontSize="20"/>
-        <Button Content="SHOW WORKERS LIST" HorizontalAlignment="Center" Margin="0,175,0,0" VerticalAlignment="Top" Height="40" Width="250" FontSize="20"/>
-        <Button Content="SHOW PURCHASE LIST" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Height="40" Width="250" FontSize="20"/>
+        <Grid Visibility="{Binding isVisibleRootWindow}">
+            <local:RootStartup LogOutRoot="{Binding viewModel.logOutRoot}" 
+                               AddProducts="{Binding viewModel.addProduct}" 
+                               ShowWorkersList="{Binding viewModel.showWorkers}" 
+                               ShowPurchaseList="{Binding viewModel.showPurchases}"/>
+        </Grid>
     </Grid>
 </Window>
