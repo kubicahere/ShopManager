@@ -331,5 +331,43 @@ namespace ShopManager.ViewModel
             }
         }
         #endregion
+        #region ICommand TotalPurchaseList
+        private ICommand _totalPurchaseBackButton = null;
+        public ICommand totalPurchaseBackButton
+        {
+            get
+            {
+                if (_totalPurchaseBackButton == null)
+                {
+                    _totalPurchaseBackButton = new RelayCommand(rootLoginViewModel.TotalPurchaseBackButton, arg => true);
+                }
+                return _totalPurchaseBackButton;
+            }
+        }
+        private ICommand _totalPurchaseList = null;
+        public ICommand totalPurchaseList
+        {
+            get
+            {
+                if (_totalPurchaseList == null)
+                {
+                    _totalPurchaseList = new RelayCommand(rootLoginViewModel.LoadPurchases, arg => true);
+                }
+                return _totalPurchaseList;
+            }
+        }
+        private ICommand _totalPurchasesSelectedItem = null;
+        public ICommand totalPurchasesSelectedItem
+        {
+            get
+            {
+                if (_totalPurchasesSelectedItem == null)
+                {
+                    _totalPurchasesSelectedItem = new RelayCommand(rootLoginViewModel.TotalPurchaseListChanged, arg => true);
+                }
+                return _totalPurchasesSelectedItem;
+            }
+        }
+        #endregion
     }
 }

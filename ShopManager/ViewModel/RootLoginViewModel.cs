@@ -30,6 +30,9 @@ namespace ShopManager.ViewModel
         private ObservableCollection<string> _listOfWorkers = new ObservableCollection<string>();
         private string _selectedWorker = string.Empty;
         private ObservableCollection<string> _listOfInfo = new ObservableCollection<string>();
+        //purchases list
+        private ObservableCollection<string> _listOfTotalPurchases = new ObservableCollection<string>();
+        private string _selectedPurchase = string.Empty;
         #endregion
 
         #region Getters & setters
@@ -46,6 +49,8 @@ namespace ShopManager.ViewModel
         public ObservableCollection<string> listOfWorkers { get { return _listOfWorkers; } set { _listOfWorkers = value; OnPropertyChanged(nameof(listOfWorkers)); } }
         public string selectedWorker { get { return _selectedWorker; } set { _selectedWorker = value; OnPropertyChanged(nameof(selectedWorker)); } }
         public ObservableCollection<string> listOfInfo { get { return _listOfInfo; } set { _listOfInfo = value; OnPropertyChanged(nameof(listOfInfo)); } }
+        public ObservableCollection<string> listOfTotalPurchases { get { return _listOfTotalPurchases; } set { _listOfTotalPurchases = value; OnPropertyChanged(nameof(listOfTotalPurchases)); } }
+        public string selectedPurchase { get { return _selectedPurchase; } set { _selectedPurchase = value; OnPropertyChanged(nameof(selectedPurchase)); } }
         #endregion
 
         #region ViewModel instances
@@ -56,9 +61,7 @@ namespace ShopManager.ViewModel
         #endregion
         public RootLoginViewModel()
         {
-            listOfWorkers.Add("X");
-            listOfWorkers.Add("X");
-            listOfWorkers.Add("X");
+            
         }
         #region Methods
         public void ClearData()
@@ -111,12 +114,12 @@ namespace ShopManager.ViewModel
         {
             isVisibleRootWindow = "Hidden";
             isVisiblePurchaseList = "Visible";
+            LoadPurchases(true);
         }
         #endregion
         #region Workers list window methods
         public void LoadWorkers(object sender)
         {
-            //nie wchodzi tu
             listOfWorkers.Clear();
             List<Employee> tmp = RepoEmployees.GetAllEmployees();
             for(int i = 0; i < tmp.Count; i++)
@@ -131,6 +134,27 @@ namespace ShopManager.ViewModel
             isVisibleWorkersList = "Hidden";
         }
         public void WorkersListChanged(object sender)
+        {
+            MessageBox.Show("LIST CHANGED");
+        }
+        #endregion
+        #region TotalPurchaseList window methods
+        public void TotalPurchaseBackButton(object sender)
+        {
+            isVisibleRootWindow = "Visible";
+            isVisiblePurchaseList = "Hidden";
+        }
+        public void LoadPurchases(object sender)
+        {
+            listOfTotalPurchases.Clear();
+            List<Purchase> tmp = RepoPurchases.GetAllPurchases();
+            for (int i = 0; i < tmp.Count; i++)
+            {
+                listOfTotalPurchases.Add($"Purchase: {tmp[i].ToString()}");
+            }
+
+        }
+        public void TotalPurchaseListChanged(object sender)
         {
             MessageBox.Show("LIST CHANGED");
         }

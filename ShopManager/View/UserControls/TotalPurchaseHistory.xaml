@@ -8,14 +8,14 @@
              d:DesignHeight="400" d:DesignWidth="450">
     <Grid>
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="25"
-                Command="{Binding BackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+                Command="{Binding PurchaseBackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         <ListBox BorderBrush="Black" Margin="15,0,0,0" 
                  Width="175" Height="300" VerticalAlignment="Center" HorizontalAlignment="Left"
                  SelectionChanged="RaisePurchaseListItemChanged"
                  ItemsSource="{Binding TotalPurchaseList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
-                 SelectedItem="{Binding SingleSelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+                 SelectedItem="{Binding SingleSelectedPurchase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
     </Grid>
 </UserControl>

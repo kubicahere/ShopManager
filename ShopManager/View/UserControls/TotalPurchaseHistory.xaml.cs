@@ -27,35 +27,35 @@ namespace ShopManager.View.UserControls
         }
         #region Dependency
         public static readonly DependencyProperty BackButtonProperty = DependencyProperty.Register(
-           "BackButton", typeof(ICommand), typeof(ClientPurchaseHistory), new FrameworkPropertyMetadata(null)
+           "PurchaseBackButton", typeof(ICommand), typeof(TotalPurchaseHistory), new FrameworkPropertyMetadata(null)
            );
-        public static readonly DependencyProperty PurchaseListProperty = DependencyProperty.Register(
-           "PurchaseList", typeof(ObservableCollection<string>), typeof(ClientPurchaseHistory), new FrameworkPropertyMetadata(null)
+        public static readonly DependencyProperty TotalPurchaseListProperty = DependencyProperty.Register(
+           "TotalPurchaseList", typeof(ObservableCollection<string>), typeof(TotalPurchaseHistory), new FrameworkPropertyMetadata(null)
            );
-        public static readonly DependencyProperty SingleSelectedItemProperty = DependencyProperty.Register(
-           "SingleSelectedItem", typeof(string), typeof(ClientPurchaseHistory), new FrameworkPropertyMetadata(null)
+        public static readonly DependencyProperty SingleSelectedPurchaseProperty = DependencyProperty.Register(
+           "SingleSelectedPurchase", typeof(string), typeof(TotalPurchaseHistory), new FrameworkPropertyMetadata(null)
            );
         #endregion
         #region Getters & setters
-        public ICommand BackButton
+        public ICommand PurchaseBackButton
         {
             get { return (ICommand)GetValue(BackButtonProperty); }
             set { SetValue(BackButtonProperty, value); }
         }
         public ObservableCollection<string> TotalPurchaseList
         {
-            get { return (ObservableCollection<string>)GetValue(PurchaseListProperty); }
-            set { SetValue(PurchaseListProperty, value); }
+            get { return (ObservableCollection<string>)GetValue(TotalPurchaseListProperty); }
+            set { SetValue(TotalPurchaseListProperty, value); }
         }
-        public string SingleSelectedItem
+        public string SingleSelectedPurchase
         {
-            get { return (string)GetValue(SingleSelectedItemProperty); }
-            set { SetValue(SingleSelectedItemProperty, value); }
+            get { return (string)GetValue(SingleSelectedPurchaseProperty); }
+            set { SetValue(SingleSelectedPurchaseProperty, value); }
         }
         #endregion
         #region Events
         public static readonly RoutedEvent BackButtonClickEvent =
-            EventManager.RegisterRoutedEvent("OtherBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ClientPurchaseHistory));
+            EventManager.RegisterRoutedEvent("OtherPurchaseBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TotalPurchaseHistory));
         public event RoutedEventHandler BackButtonClick
         {
             add { AddHandler(BackButtonClickEvent, value); }
@@ -67,7 +67,7 @@ namespace ShopManager.View.UserControls
             RaiseEvent(args);
         }
         public static readonly RoutedEvent PurchaseListItemChangedEvent =
-            EventManager.RegisterRoutedEvent("PurchaseListItemChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ClientPurchaseHistory));
+            EventManager.RegisterRoutedEvent("TotalPurchaseListItemChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TotalPurchaseHistory));
         public event RoutedEventHandler PurchaseListItemChanged
         {
             add { AddHandler(PurchaseListItemChangedEvent, value); }

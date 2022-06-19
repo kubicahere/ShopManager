@@ -18,13 +18,26 @@
                                ShowPurchaseList="{Binding viewModel.showPurchases}"/>
         </Grid>
         <Grid Visibility="{Binding isVisibleWorkersList}">
-            <local:WorkersList BackButton="{Binding viewModel.workersBackButton}" WorkerList="{Binding listOfWorkers}" SingleSelectedItem="{Binding selectedWorker}">
+            <local:WorkersList BackButton="{Binding viewModel.workersBackButton}"
+                               WorkerList="{Binding listOfWorkers}"
+                               SingleSelectedItem="{Binding selectedWorker}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="WorkersListItemChanged">
                         <i:InvokeCommandAction Command="{Binding viewModel.workersSelectedItem}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </local:WorkersList>
+        </Grid>
+        <Grid Visibility="{Binding isVisiblePurchaseList}">
+            <local:TotalPurchaseHistory PurchaseBackButton="{Binding viewModel.totalPurchaseBackButton}"
+                               TotalPurchaseList="{Binding listOfTotalPurchases}"
+                               SingleSelectedPurchase="{Binding selectedPurchase}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PurchaseListItemChanged">
+                        <i:InvokeCommandAction Command="{Binding viewModel.totalPurchasesSelectedItem}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </local:TotalPurchaseHistory>
         </Grid>
     </Grid>
 </Window>
