@@ -216,5 +216,56 @@ namespace ShopManager.ViewModel
         }
 
         #endregion
+        #region ICommand RootStartup
+        private ICommand _logOutRoot = null;
+        public ICommand logOutRoot
+        {
+            get
+            {
+                if (_logOutRoot == null)
+                {
+                    _logOutRoot = new RelayCommand(rootLoginViewModel.LogOut, arg => true);
+                }
+                return _logOutRoot;
+            }
+        }
+        private ICommand _addProduct = null;
+        public ICommand addProduct
+        {
+            get
+            {
+                if (_addProduct == null)
+                {
+                    _addProduct = new RelayCommand(rootLoginViewModel.AddProducts, arg => true);
+                }
+                return _addProduct;
+            }
+        }
+        private ICommand _showWorkers = null;
+        public ICommand showWorkers
+        {
+            get
+            {
+                if (_showWorkers == null)
+                {
+                    _showWorkers = new RelayCommand(rootLoginViewModel.WorkersList, arg => true);
+                }
+                return _showWorkers;
+            }
+        }
+        private ICommand _showPurchases = null;
+        public ICommand showPurchases
+        {
+            get
+            {
+                if (_showPurchases == null)
+                {
+                    _showPurchases = new RelayCommand(rootLoginViewModel.PurchaseList, arg => true);
+                }
+                return _showPurchases;
+            }
+        }
+
+        #endregion
     }
 }

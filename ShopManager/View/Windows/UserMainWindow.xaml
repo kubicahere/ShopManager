@@ -12,7 +12,10 @@
     </Window.Resources>
     <Grid>
         <Grid Visibility="{Binding isVisibleUserWindow}">
-            <local:UserStartup LogOut="{Binding viewModel.logOutClick}" Shopping="{Binding viewModel.shoppingClick}" PurchaseList="{Binding viewModel.purchaseHistoryClick}" AccountSettings="{Binding viewModel.accountSettingsClick}"/>
+            <local:UserStartup LogOut="{Binding viewModel.logOutClick}" 
+                               Shopping="{Binding viewModel.shoppingClick}" 
+                               PurchaseList="{Binding viewModel.purchaseHistoryClick}" 
+                               AccountSettings="{Binding viewModel.accountSettingsClick}"/>
         </Grid>
     </Grid>
    
