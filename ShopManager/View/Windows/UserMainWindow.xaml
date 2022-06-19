@@ -4,13 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopManager.View.UserControls" xmlns:com="clr-namespace:ShopManager.Components"
-             mc:Ignorable="d" 
+             xmlns:vm="clr-namespace:ShopManager.ViewModel"
+        mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="450">
-    <Grid>
-        <Button Content="Sign out" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Height="25"/>
-        <Button Content="GO SHOPPING" HorizontalAlignment="Center" Margin="0,106,0,0" VerticalAlignment="Top" Height="40" Width="250" FontSize="20"/>
-        <Button Content="PURCHASE HISTORY" HorizontalAlignment="Center" Margin="0,175,0,0" VerticalAlignment="Top" Height="40" Width="250" FontSize="20"/>
-        <Button Content="ACCOUNT SETTINGS" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Height="40" Width="250" FontSize="20"/>
+    <Window.Resources>
+        <vm:MainViewModel x:Key="viewModel"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource viewModel}">
+        <local:UserStartup LogOut="{Binding logOutClick}" Shopping="{Binding shoppingClick}" PurchaseList="{Binding purchaseHistoryClick}" AccountSettings="{Binding accountSettingsClick}"/>
     </Grid>
 </Window>
 

@@ -69,6 +69,10 @@ namespace ShopManager.ViewModel
         }
         #endregion
         #region Window methods
+        public void LogOut(object sender)
+        {
+            MessageBox.Show("LogOut");
+        }
         public void GoShopping(object sender)
         {
             MessageBox.Show("GoShopping");

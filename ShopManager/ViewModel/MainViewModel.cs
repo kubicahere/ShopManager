@@ -165,5 +165,56 @@ namespace ShopManager.ViewModel
             }
         }
         #endregion
+        #region ICommand UserStartup
+        private ICommand _logOutClick = null;
+        public ICommand logOutClick
+        {
+            get
+            {
+                if(_logOutClick == null)
+                {
+                    _logOutClick = new RelayCommand(userLoginViewModel.LogOut, arg => true);
+                }
+                return _logOutClick;
+            }
+        }
+        private ICommand _shoppingClick = null;
+        public ICommand shoppingClick
+        {
+            get
+            {
+                if(_shoppingClick == null)
+                {
+                    _shoppingClick = new RelayCommand(userLoginViewModel.GoShopping, arg => true);
+                }
+                return _shoppingClick;
+            }
+        }
+        private ICommand _purchaseHistoryClick = null;
+        public ICommand purchaseHistoryClick
+        {
+            get
+            {
+                if(_purchaseHistoryClick == null)
+                {
+                    _purchaseHistoryClick = new RelayCommand(userLoginViewModel.PurchaseHistory, arg => true);
+                }
+                return _purchaseHistoryClick;
+            }
+        }
+        private ICommand _accountSettingClick = null;
+        public ICommand accountSettingsClick
+        {
+            get
+            {
+                if(_accountSettingClick == null)
+                {
+                    _accountSettingClick = new RelayCommand(userLoginViewModel.AccountSettings, arg => true);
+                }
+                return _accountSettingClick;
+            }
+        }
+
+        #endregion
     }
 }
