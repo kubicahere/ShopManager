@@ -22,7 +22,7 @@
             <local:ClientPurchaseHistory BackButton="{Binding viewModel.purchaseBackButton}" PurchaseList="{Binding listOfTransactions, Mode=TwoWay}" SingleSelectedItem="{Binding selectedTransaction, Mode=TwoWay}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="PurchaseListItemChanged">
-                        <i:InvokeCommandAction Command="{Binding viewModel.selectedPurchaseListClick}"></i:InvokeCommandAction>
+                        <i:InvokeCommandAction Command="{Binding viewModel.purchaseSelectedItem}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </local:ClientPurchaseHistory>

@@ -134,7 +134,7 @@ namespace ShopManager.ViewModel
         }
         public void PurchaseListChanged(object sender)
         {
-
+            MessageBox.Show("LIST CHANGED");
         }
         #endregion
         #region Account Setting window methods
