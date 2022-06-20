@@ -121,14 +121,14 @@ namespace ShopManager.ViewModel
         public void LoadCustomerPurchases(object sender)
         {
             listOfTransactions.Clear();
-            MessageBox.Show(login);
+            //MessageBox.Show(login);
             Client singleClient = RepoClients.GetClientByLoginAndPasswd(login, password);
             
             ObservableCollection<Purchase> clientPurchases = RepoPurchases.GetClientPurchasesById(singleClient);
             
             for(int i = 0; i < clientPurchases.Count; i++)
             {
-                MessageBox.Show(singleClient.ToString());
+                //MessageBox.Show(singleClient.ToString());
                 listOfTransactions.Add($"Order no.{clientPurchases[i].ToString()}");
             }
         }

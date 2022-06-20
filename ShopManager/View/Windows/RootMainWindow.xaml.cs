@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace ShopManager.View.Windows
     /// <summary>
     /// Interaction logic for RootMainWindow.xaml
     /// </summary>
-    public partial class RootMainWindow : Window
+    public partial class RootMainWindow : MetroWindow
     {
         public RootMainWindow()
         {

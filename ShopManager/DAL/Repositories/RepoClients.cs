@@ -29,7 +29,6 @@ namespace ShopManager.DAL.Repositories
                 while (reader.Read())
                 {
                     user = new Client(reader);
-                    MessageBox.Show(user.ToString());
                 }
                     
                 connection.Close();
