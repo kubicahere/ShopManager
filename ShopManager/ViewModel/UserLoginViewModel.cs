@@ -151,10 +151,21 @@ namespace ShopManager.ViewModel
             purchaseDate = purchase.PurchaseDate;
             productName = purchase.ProductName;
             clientName = purchase.Client_name + " " + purchase.Client_surname;
-            purchaseListPrice = purchase.Price.ToString(); //TODO PRICE WORKING
+            purchaseListPrice = purchase.Price.ToString(); 
         }
         #endregion
         #region Account Setting window methods
+        //todo check data
+        public void SettingsBackButton(object sender)
+        {
+            isVisibleAccountSettings = "Hidden";
+            isVisibleUserWindow = "Visible";
+        }
+        public void EditUser(object sender)
+        {
+
+        }
+
         #endregion
     }
 }

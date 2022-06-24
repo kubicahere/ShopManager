@@ -381,5 +381,32 @@ namespace ShopManager.ViewModel
             }
         }
         #endregion
+        #region ICommand UserAccount
+        private ICommand _editUser = null;
+        public ICommand EditUser
+        {
+            get
+            {
+                if (_editUser == null)
+                {
+                    _editUser = new RelayCommand(userLoginViewModel.EditUser, arg => true);
+                }
+                return _editUser;
+            }
+        }
+
+        private ICommand _editBackButton = null;
+        public ICommand EditBackButton
+        {
+            get
+            {
+                if (_editBackButton == null)
+                {
+                    _editBackButton = new RelayCommand(userLoginViewModel.BackButton, arg => true);
+                }
+                return _editBackButton;
+            }
+        }
+        #endregion
     }
 }

@@ -35,5 +35,18 @@
                 </i:Interaction.Triggers>
             </local:ClientPurchaseHistory>
         </Grid>
+        <!--TODO-->
+        <Grid Visibility="{Binding registerWindowViewModel.isVisible}">
+            <local:UserAccount BackButton="{Binding RegisterBackButton}" 
+                                Register="{Binding RegisterUser}"
+                                Firstname="{Binding registerWindowViewModel.firstName, Mode=TwoWay}"
+                                Surname="{Binding registerWindowViewModel.surname, Mode=TwoWay}"
+                                Login="{Binding registerWindowViewModel.login, Mode=TwoWay}"
+                                Password="{Binding registerWindowViewModel.password, Mode=TwoWay}"
+                                RepeatPassword="{Binding registerWindowViewModel.repeatPassword, Mode=TwoWay}"
+                                PhoneNumber="{Binding registerWindowViewModel.phoneNumber, Mode=TwoWay}" 
+                                EmailAddress="{Binding registerWindowViewModel.emailAddress, Mode=TwoWay}"
+                                CanRegister="{Binding registerWindowViewModel.canRegister}"/>
+        </Grid>
     </Grid>
 </mah:MetroWindow>
