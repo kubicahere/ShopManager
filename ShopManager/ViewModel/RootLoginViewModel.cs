@@ -1,5 +1,6 @@
 ﻿using ShopManager.DAL.Entities;
 using ShopManager.DAL.Repositories;
+using ShopManager.Model;
 using ShopManager.View.Windows;
 using ShopManager.ViewModel.Base;
 using System;
@@ -66,6 +67,7 @@ namespace ShopManager.ViewModel
         public StartWindowViewModel startWindow { get; set; }
         public RootMainWindow rootMainWindow { get; set; }
         public MainViewModel viewModel { get; set; }
+        public Root rootModel { get; set; } = new Root();
 
         #endregion
         public RootLoginViewModel()
@@ -133,7 +135,7 @@ namespace ShopManager.ViewModel
             List<Employee> tmp = RepoEmployees.GetAllEmployees();
             for(int i = 0; i < tmp.Count; i++)
             {
-                listOfWorkers.Add($"Employee: {tmp[i].ToString()}");
+                listOfWorkers.Add(tmp[i].ToString());
             }
 
         }
@@ -144,13 +146,13 @@ namespace ShopManager.ViewModel
         }
         public void WorkersListChanged(object sender)
         {
-            Employee employee = new Employee();
             int index = listOfWorkers.IndexOf(selectedWorker);
-            string[] elements = listOfWorkers[index].ToString().Split(',');
-            firstname = elements[0];
-            secondname = elements[1];
-            salary = elements[2];
-            salary =
+            Employee employee = new Employee(rootModel.listOfEmployees[index]);
+            firstname = employee.Name;
+            secondname = employee.Surname;
+            salary = employee.Salary.ToString();
+            sbyte? positionID = employee.PositionID;
+            
         }
         #endregion
         #region TotalPurchaseList window methods

@@ -22,7 +22,7 @@
         <Grid Visibility="{Binding isVisibleWorkersList}">
             <local:WorkersList BackButton="{Binding viewModel.workersBackButton}"
                                WorkerList="{Binding listOfWorkers}"
-                               SingleSelectedItem="{Binding selectedWorker}">
+                               SingleSelectedItem="{Binding selectedWorker, Mode=TwoWay}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="WorkersListItemChanged">
                         <i:InvokeCommandAction Command="{Binding viewModel.workersSelectedItem}"></i:InvokeCommandAction>
