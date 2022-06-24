@@ -65,6 +65,26 @@ namespace ShopManager.View.UserControls
             get { return (string)GetValue(SingleSelectedItemProperty); }
             set { SetValue(SingleSelectedItemProperty, value); }
         }
+        public string FirstNameFill
+        {
+            get { return (string)GetValue(FirstNameFillProperty); }
+            set { SetValue(FirstNameFillProperty, value); }
+        }
+        public string SecondNameFill
+        {
+            get { return (string)GetValue(SecondNameFillProperty); }
+            set { SetValue(SecondNameFillProperty, value); }
+        }
+        public string SalaryFill
+        {
+            get { return (string)GetValue(SalaryFillProperty); }
+            set { SetValue(SalaryFillProperty, value); }
+        }
+        public string PositionFill
+        {
+            get { return (string)GetValue(PositionFillProperty); }
+            set { SetValue(PositionFillProperty, value); }
+        }
 
         #endregion
         #region Events

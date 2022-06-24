@@ -19,6 +19,25 @@ namespace ShopManager.DAL.Repositories
 
         #endregion
 
+        public static Position GetPositionById(sbyte? posID)
+        {
+            string TARGET_POSITION = $"SELECT * FROM position WHERE id={posID}";
+            Position pos = new Position();
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand(TARGET_POSITION, connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    pos = new Position(reader);
+                }
+
+                connection.Close();
+            }
+            return pos;
+        }
+
         #region CRUD Methods
         public static List<Position> GetAllPositions()
         {

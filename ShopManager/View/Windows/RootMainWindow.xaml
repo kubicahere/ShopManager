@@ -22,7 +22,11 @@
         <Grid Visibility="{Binding isVisibleWorkersList}">
             <local:WorkersList BackButton="{Binding viewModel.workersBackButton}"
                                WorkerList="{Binding listOfWorkers}"
-                               SingleSelectedItem="{Binding selectedWorker, Mode=TwoWay}">
+                               SingleSelectedItem="{Binding selectedWorker, Mode=TwoWay}"
+                               FirstNameFill="{Binding firstname}"
+                               SecondNameFill="{Binding secondname, Mode=TwoWay}"
+                               SalaryFill="{Binding salary, Mode=TwoWay}"
+                               PositionFill="{Binding position, Mode=TwoWay}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="WorkersListItemChanged">
                         <i:InvokeCommandAction Command="{Binding viewModel.workersSelectedItem}"></i:InvokeCommandAction>

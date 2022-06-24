@@ -10,7 +10,7 @@
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="25"
                 Command="{Binding PurchaseBackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <ListBox BorderBrush="Black" Margin="15,0,0,0" 
+        <ListBox BorderBrush="Black" Margin="15,10,0,0" 
                  Width="175" Height="300" VerticalAlignment="Center" HorizontalAlignment="Left"
                  SelectionChanged="RaisePurchaseListItemChanged"
                  ItemsSource="{Binding TotalPurchaseList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 

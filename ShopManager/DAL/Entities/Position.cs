@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopManager.DAL.Entities
 {
-    class Position
+    public class Position
     {
         #region Properties
         public int? Id { get; set; }
