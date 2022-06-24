@@ -27,7 +27,6 @@ namespace ShopManager.DAL
 
         private DBConnection()
         {
-            //stworzenie connection stringa na podstawie danych zapisanych w Sttings do których mamy dostęp spoza aplikacji 
             stringBuilder.UserID = Properties.Settings.Default.userID;
             stringBuilder.Server = Properties.Settings.Default.server;
             stringBuilder.Database = Properties.Settings.Default.database;

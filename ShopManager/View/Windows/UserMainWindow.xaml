@@ -27,7 +27,7 @@
                                          PurchaseDateFill="{Binding purchaseDate}"
                                          ProductNameFill="{Binding productName}"
                                          ClientNameFill="{Binding clientName}"
-                                         PriceFill="{Binding }">
+                                         PriceFill="{Binding purchaseListPrice}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="PurchaseListItemChanged">
                         <i:InvokeCommandAction Command="{Binding viewModel.purchaseSelectedItem}"></i:InvokeCommandAction>

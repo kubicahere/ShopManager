@@ -34,6 +34,7 @@ namespace ShopManager.ViewModel
         private string _productName = string.Empty;
         private string _clientName = string.Empty;
         private string _purchaseListPrice = string.Empty;
+
         #endregion
         #region Getters & setters
         public string isVisible { get { return _isVisible; } set { _isVisible = value; OnPropertyChanged(nameof(isVisible)); } }
@@ -150,8 +151,7 @@ namespace ShopManager.ViewModel
             purchaseDate = purchase.PurchaseDate;
             productName = purchase.ProductName;
             clientName = purchase.Client_name + " " + purchase.Client_surname;
-            purchaseListPrice = purchase.Price; //TODO PRICE WORKING
-            MessageBox.Show(purchase.Price);
+            purchaseListPrice = purchase.Price.ToString(); //TODO PRICE WORKING
         }
         #endregion
         #region Account Setting window methods

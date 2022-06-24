@@ -190,7 +190,7 @@ namespace ShopManager.ViewModel
             purchaseDate = purchase.PurchaseDate;
             productName = purchase.ProductName;
             clientName = purchase.Client_name + " " + purchase.Client_surname;
-            purchaseListPrice = purchase.Price; //TODO PRICE WORKING
+            purchaseListPrice = purchase.Price.ToString();
         }
         #endregion
     }

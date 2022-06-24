@@ -16,7 +16,7 @@ namespace ShopManager.DAL.Entities
         public string PurchaseDate { get; set; }
         public string ProductName { get; set; }
         public string? EmployeeSurname { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         #endregion
 
         #region Constructors
@@ -28,9 +28,10 @@ namespace ShopManager.DAL.Entities
             PurchaseDate = reader["purchase_date"].ToString();
             ProductName = reader["product_name"].ToString();
             EmployeeSurname = reader["employee_surname"].ToString();
-            Price = reader["price"].ToString();
+            Price = decimal.Parse(reader["price"].ToString());
+            
         }
-        public Purchase(string clientName, string clientSurname, string employeeSurname, string product_name, string purchase_date, string price)
+        public Purchase(string clientName, string clientSurname, string employeeSurname, string product_name, string purchase_date, decimal price)
         {
             Id = null; // Add a proper default value
             PurchaseDate = purchase_date.Trim();
@@ -48,6 +49,7 @@ namespace ShopManager.DAL.Entities
             EmployeeSurname = purchase.EmployeeSurname;
             ProductName = purchase.ProductName;
             PurchaseDate = purchase.PurchaseDate;
+            Price = purchase.Price;
         }
         public Purchase() { }
         #endregion
