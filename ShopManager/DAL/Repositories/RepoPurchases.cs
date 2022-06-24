@@ -33,6 +33,7 @@ namespace ShopManager.DAL.Repositories
             }
             return purchases;
         }
+        
         #endregion
 
         #region CRUD Methods

@@ -39,6 +39,10 @@ namespace ShopManager.ViewModel
         private string _secondname = string.Empty;
         private string _salary = string.Empty;
         private string _position = string.Empty;
+        //total purchase data
+        private string _purchaseDate = string.Empty;
+        private string _productName = string.Empty;
+        private string _clientName = string.Empty;
         #endregion
 
         #region Getters & setters
@@ -61,6 +65,10 @@ namespace ShopManager.ViewModel
         public string secondname { get { return _secondname; } set { _secondname = value; OnPropertyChanged(nameof(secondname)); } }
         public string salary { get { return _salary; } set { _salary = value; OnPropertyChanged(nameof(salary)); } }
         public string position { get { return _position; } set { _position = value; OnPropertyChanged(nameof(position)); } }
+        public string purchaseDate { get { return _purchaseDate; } set { _purchaseDate = value; OnPropertyChanged(nameof(purchaseDate)); } }
+        public string productName { get { return _productName; } set { _productName = value; OnPropertyChanged(nameof(productName)); } }
+        public string clientName { get { return _clientName; } set { _clientName = value; OnPropertyChanged(nameof(clientName)); } }
+
         #endregion
 
         #region ViewModel instances
@@ -169,13 +177,17 @@ namespace ShopManager.ViewModel
             List<Purchase> tmp = RepoPurchases.GetAllPurchases();
             for (int i = 0; i < tmp.Count; i++)
             {
-                listOfTotalPurchases.Add($"Purchase: {tmp[i].ToString()}");
+                listOfTotalPurchases.Add(tmp[i].ToString());
             }
 
         }
         public void TotalPurchaseListChanged(object sender)
         {
-            MessageBox.Show("LIST CHANGED");
+            int index = listOfTotalPurchases.IndexOf(selectedPurchase);
+            Purchase purchase = new Purchase(rootModel.listOfPurchases[index]);
+            purchaseDate = purchase.PurchaseDate;
+           // productName = purchase.ProductCode; //TODO
+           // clientName = purchase.ClientID; //TODO
         }
         #endregion
     }

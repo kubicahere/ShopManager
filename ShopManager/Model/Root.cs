@@ -28,7 +28,11 @@ namespace ShopManager.Model
             {
                 listOfEmployees.Add(employee);
             }
-            //TODO get all transactions data
+            var purchases = RepoPurchases.GetAllPurchases();
+            foreach (var purchase in purchases)
+            {
+                listOfPurchases.Add(purchase);
+            }
         }
     }
 }

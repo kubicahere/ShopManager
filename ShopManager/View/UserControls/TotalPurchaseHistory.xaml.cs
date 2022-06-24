@@ -35,6 +35,17 @@ namespace ShopManager.View.UserControls
         public static readonly DependencyProperty SingleSelectedPurchaseProperty = DependencyProperty.Register(
            "SingleSelectedPurchase", typeof(string), typeof(TotalPurchaseHistory), new FrameworkPropertyMetadata(null)
            );
+
+        public static readonly DependencyProperty PurchaseDateFillProperty = DependencyProperty.Register(
+           "PurchaseDateFill", typeof(string), typeof(TotalPurchaseHistory), new FrameworkPropertyMetadata(null)
+           );
+        public static readonly DependencyProperty ProductNameFillProperty = DependencyProperty.Register(
+          "ProductNameFill", typeof(string), typeof(TotalPurchaseHistory), new FrameworkPropertyMetadata(null)
+          );
+        public static readonly DependencyProperty ClientNameFillProperty = DependencyProperty.Register(
+          "ClientNameFill", typeof(string), typeof(TotalPurchaseHistory), new FrameworkPropertyMetadata(null)
+          );
+     
         #endregion
         #region Getters & setters
         public ICommand PurchaseBackButton
@@ -52,6 +63,22 @@ namespace ShopManager.View.UserControls
             get { return (string)GetValue(SingleSelectedPurchaseProperty); }
             set { SetValue(SingleSelectedPurchaseProperty, value); }
         }
+        public string PurchaseDateFill
+        {
+            get { return (string)GetValue(PurchaseDateFillProperty); }
+            set { SetValue(PurchaseDateFillProperty, value); }
+        }
+        public string ProductNameFill
+        {
+            get { return (string)GetValue(ProductNameFillProperty); }
+            set { SetValue(ProductNameFillProperty, value); }
+        }
+        public string ClientNameFill
+        {
+            get { return (string)GetValue(ClientNameFillProperty); }
+            set { SetValue(ClientNameFillProperty, value); }
+        }
+
         #endregion
         #region Events
         public static readonly RoutedEvent BackButtonClickEvent =

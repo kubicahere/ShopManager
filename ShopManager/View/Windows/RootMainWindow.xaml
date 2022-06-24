@@ -37,7 +37,10 @@
         <Grid Visibility="{Binding isVisiblePurchaseList}">
             <local:TotalPurchaseHistory PurchaseBackButton="{Binding viewModel.totalPurchaseBackButton}"
                                TotalPurchaseList="{Binding listOfTotalPurchases}"
-                               SingleSelectedPurchase="{Binding selectedPurchase}">
+                               SingleSelectedPurchase="{Binding selectedPurchase, Mode=TwoWay}"
+                               PurchaseDateFill="{Binding purchaseDate}"
+                               ProductNameFill="{Binding productName}"
+                               ClientNameFill="{Binding clientName}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="PurchaseListItemChanged">
                         <i:InvokeCommandAction Command="{Binding viewModel.totalPurchasesSelectedItem}"></i:InvokeCommandAction>
