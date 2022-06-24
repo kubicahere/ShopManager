@@ -30,7 +30,9 @@ namespace ShopManager.ViewModel
         //CLIENT PURCHASE HISTORY
         private ObservableCollection<string> _listOfTransactions = new ObservableCollection<string>();
         private string _selectedTransaction = string.Empty;
-        private ObservableCollection<string> _listOfInfo = new ObservableCollection<string>();
+        private string _purchaseDate = string.Empty;
+        private string _productName = string.Empty;
+        private string _clientName = string.Empty;
         #endregion
         #region Getters & setters
         public string isVisible { get { return _isVisible; } set { _isVisible = value; OnPropertyChanged(nameof(isVisible)); } }
@@ -45,7 +47,9 @@ namespace ShopManager.ViewModel
         public string isVisibleAccountSettings { get { return _isVisibleAccountSettings; } set { _isVisibleAccountSettings = value; OnPropertyChanged(nameof(isVisibleAccountSettings)); } }
         public ObservableCollection<string> listOfTransactions { get { return _listOfTransactions; } set { _listOfTransactions = value; OnPropertyChanged(nameof(listOfTransactions)); } }
         public string selectedTransaction { get { return _selectedTransaction; } set { _selectedTransaction = value; OnPropertyChanged(nameof(selectedTransaction)); } }
-        public ObservableCollection<string> listOfInfo { get { return _listOfInfo; } set { _listOfInfo = value; OnPropertyChanged(nameof(listOfInfo)); } }
+        public string purchaseDate { get { return _purchaseDate; } set { _purchaseDate = value; OnPropertyChanged(nameof(purchaseDate)); } }
+        public string productName { get { return _productName; } set { _productName = value; OnPropertyChanged(nameof(productName)); } }
+        public string clientName { get { return _clientName; } set { _clientName = value; OnPropertyChanged(nameof(clientName)); } }
 
         #endregion
         public StartWindowViewModel startWindow { get; set; }
@@ -121,15 +125,13 @@ namespace ShopManager.ViewModel
         public void LoadCustomerPurchases(object sender)
         {
             listOfTransactions.Clear();
-            //MessageBox.Show(login);
             Client singleClient = RepoClients.GetClientByLoginAndPasswd(login, password);
             
             ObservableCollection<Purchase> clientPurchases = RepoPurchases.GetClientPurchasesById(singleClient);
             
             for(int i = 0; i < clientPurchases.Count; i++)
             {
-                //MessageBox.Show(singleClient.ToString());
-                listOfTransactions.Add($"Order no.{clientPurchases[i].ToString()}");
+                listOfTransactions.Add(clientPurchases[i].ToString());
             }
         }
         public void PurchaseBackButton(object sender)

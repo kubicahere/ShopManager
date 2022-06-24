@@ -21,7 +21,12 @@
                                AccountSettings="{Binding viewModel.accountSettingsClick}"/>
         </Grid>
         <Grid Visibility="{Binding isVisiblePurchaseHistory}">
-            <local:ClientPurchaseHistory BackButton="{Binding viewModel.purchaseBackButton}" PurchaseList="{Binding listOfTransactions, Mode=TwoWay}" SingleSelectedItem="{Binding selectedTransaction, Mode=TwoWay}">
+            <local:ClientPurchaseHistory BackButton="{Binding viewModel.purchaseBackButton}"
+                                         PurchaseList="{Binding listOfTransactions, Mode=TwoWay}"
+                                         SingleSelectedItem="{Binding selectedTransaction, Mode=TwoWay}"
+                                         PurchaseDateFill="{Binding purchaseDate}"
+                                         ProductNameFill="{Binding productName}"
+                                         ClientNameFill="{Binding clientName}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="PurchaseListItemChanged">
                         <i:InvokeCommandAction Command="{Binding viewModel.purchaseSelectedItem}"></i:InvokeCommandAction>

@@ -280,6 +280,18 @@ namespace ShopManager.ViewModel
                 return _purchaseBackButton;
             }
         }
+        private ICommand _clientPurchaseList = null;
+        public ICommand clientPurchaseList
+        {
+            get
+            {
+                if (_clientPurchaseList == null)
+                {
+                    _clientPurchaseList = new RelayCommand(userLoginViewModel.LoadCustomerPurchases, arg => true);
+                }
+                return _clientPurchaseList;
+            }
+        }
         private ICommand _purchaseSelectedItem = null;
         public ICommand purchaseSelectedItem
         {

@@ -18,6 +18,7 @@ namespace ShopManager.Model
         public User()
         {
             var products = RepoProducts.GetAllProducts();
+            //var purchases = RepoPurchases.GetClientPurchasesById(Cclient);
             foreach(var product in products)
             {
                 listOfProducts.Add(product);
