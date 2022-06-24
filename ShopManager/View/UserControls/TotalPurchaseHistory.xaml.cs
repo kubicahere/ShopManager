@@ -45,7 +45,10 @@ namespace ShopManager.View.UserControls
         public static readonly DependencyProperty ClientNameFillProperty = DependencyProperty.Register(
           "ClientNameFill", typeof(string), typeof(TotalPurchaseHistory), new FrameworkPropertyMetadata(null)
           );
-     
+        public static readonly DependencyProperty PriceFillProperty = DependencyProperty.Register(
+          "PriceFill", typeof(string), typeof(TotalPurchaseHistory), new FrameworkPropertyMetadata(null)
+          );
+
         #endregion
         #region Getters & setters
         public ICommand PurchaseBackButton
@@ -78,7 +81,11 @@ namespace ShopManager.View.UserControls
             get { return (string)GetValue(ClientNameFillProperty); }
             set { SetValue(ClientNameFillProperty, value); }
         }
-
+        public string PriceFill
+        {
+            get { return (string)GetValue(PriceFillProperty); }
+            set { SetValue(PriceFillProperty, value); }
+        }
         #endregion
         #region Events
         public static readonly RoutedEvent BackButtonClickEvent =

@@ -15,7 +15,7 @@
                  SelectionChanged="RaisePurchaseListItemChanged"
                  ItemsSource="{Binding PurchaseList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
-                 SelectedItem="{Binding SingleSelectedPurchase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+                 SelectedItem="{Binding SingleSelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 
         <Label Content="Purchase Date:" Margin="250,75,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
@@ -31,6 +31,11 @@
         <Label Content="Client name:" Margin="275,175,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBlock Margin="325,175,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
                    Text="{Binding ClientNameFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+        <Label Content="Price:" Margin="275,225,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Margin="325,225,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
+                   Text="{Binding PriceFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 
     </Grid>

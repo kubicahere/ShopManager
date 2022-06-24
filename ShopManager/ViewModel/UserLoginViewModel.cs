@@ -33,6 +33,7 @@ namespace ShopManager.ViewModel
         private string _purchaseDate = string.Empty;
         private string _productName = string.Empty;
         private string _clientName = string.Empty;
+        private string _purchaseListPrice = string.Empty;
         #endregion
         #region Getters & setters
         public string isVisible { get { return _isVisible; } set { _isVisible = value; OnPropertyChanged(nameof(isVisible)); } }
@@ -50,6 +51,7 @@ namespace ShopManager.ViewModel
         public string purchaseDate { get { return _purchaseDate; } set { _purchaseDate = value; OnPropertyChanged(nameof(purchaseDate)); } }
         public string productName { get { return _productName; } set { _productName = value; OnPropertyChanged(nameof(productName)); } }
         public string clientName { get { return _clientName; } set { _clientName = value; OnPropertyChanged(nameof(clientName)); } }
+        public string purchaseListPrice { get { return _purchaseListPrice; } set { _purchaseListPrice = value; OnPropertyChanged(nameof(purchaseListPrice)); } }
 
         #endregion
         public StartWindowViewModel startWindow { get; set; }
@@ -141,7 +143,15 @@ namespace ShopManager.ViewModel
         }
         public void PurchaseListChanged(object sender)
         {
-            MessageBox.Show("LIST CHANGED");
+            int index = listOfTransactions.IndexOf(selectedTransaction);
+            Client singleClient = RepoClients.GetClientByLoginAndPasswd(login, password);
+            ObservableCollection<Purchase> transactions = RepoPurchases.GetClientPurchasesById(singleClient);
+            Purchase purchase = new Purchase(transactions[index]);
+            purchaseDate = purchase.PurchaseDate;
+            productName = purchase.ProductName;
+            clientName = purchase.Client_name + " " + purchase.Client_surname;
+            purchaseListPrice = purchase.Price; //TODO PRICE WORKING
+            MessageBox.Show(purchase.Price);
         }
         #endregion
         #region Account Setting window methods

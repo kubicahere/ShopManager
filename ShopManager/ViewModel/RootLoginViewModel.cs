@@ -43,6 +43,7 @@ namespace ShopManager.ViewModel
         private string _purchaseDate = string.Empty;
         private string _productName = string.Empty;
         private string _clientName = string.Empty;
+        private string _purchaseListPrice = string.Empty;
         #endregion
 
         #region Getters & setters
@@ -68,6 +69,7 @@ namespace ShopManager.ViewModel
         public string purchaseDate { get { return _purchaseDate; } set { _purchaseDate = value; OnPropertyChanged(nameof(purchaseDate)); } }
         public string productName { get { return _productName; } set { _productName = value; OnPropertyChanged(nameof(productName)); } }
         public string clientName { get { return _clientName; } set { _clientName = value; OnPropertyChanged(nameof(clientName)); } }
+        public string purchaseListPrice { get { return _purchaseListPrice; } set { _purchaseListPrice = value; OnPropertyChanged(nameof(purchaseListPrice)); } }
 
         #endregion
 
@@ -186,8 +188,9 @@ namespace ShopManager.ViewModel
             int index = listOfTotalPurchases.IndexOf(selectedPurchase);
             Purchase purchase = new Purchase(rootModel.listOfPurchases[index]);
             purchaseDate = purchase.PurchaseDate;
-           // productName = purchase.ProductCode; //TODO
-           // clientName = purchase.ClientID; //TODO
+            productName = purchase.ProductName;
+            clientName = purchase.Client_name + " " + purchase.Client_surname;
+            purchaseListPrice = purchase.Price; //TODO PRICE WORKING
         }
         #endregion
     }
