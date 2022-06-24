@@ -11,35 +11,42 @@ namespace ShopManager.DAL.Entities
     {
         #region Properties
         public sbyte? Id { get; set; }
-        public int? ClientID { get; set; }
-        public sbyte? EmployeeID { get; set; }
+        public string Client_name { get; set; }
+        public string Client_surname { get; set; }
         public string PurchaseDate { get; set; }
-        public decimal ProductCode { get; set; }
+        public string ProductName { get; set; }
+        public string? EmployeeSurname { get; set; }
+        public string Price { get; set; }
         #endregion
 
         #region Constructors
         public Purchase(MySqlDataReader reader)
         {
             Id = sbyte.Parse(reader["id"].ToString());
-            ClientID = sbyte.Parse(reader["client_id"].ToString());
-            EmployeeID = sbyte.Parse(reader["employee_id"].ToString());
+            Client_name = reader["client_name"].ToString();
+            Client_surname = reader["client_surname"].ToString();
             PurchaseDate = reader["purchase_date"].ToString();
-            ProductCode = decimal.Parse(reader["product_code"].ToString());
+            ProductName = reader["product_name"].ToString();
+            EmployeeSurname = reader["employee_surname"].ToString();
+            Price = reader["price"].ToString();
         }
-        public Purchase(int client_id, sbyte employee_id, decimal product_code, string purchase_date)
+        public Purchase(string clientName, string clientSurname, string employeeSurname, string product_name, string purchase_date, string price)
         {
             Id = null; // Add a proper default value
             PurchaseDate = purchase_date.Trim();
-            ClientID = client_id;
-            EmployeeID = employee_id;
-            ProductCode = product_code;
+            Client_name = clientName;
+            Client_surname = clientSurname;
+            ProductName = product_name;
+            EmployeeSurname = employeeSurname;
+            Price = price;
         }
         public Purchase(Purchase purchase)
         {
             Id = purchase.Id;
-            ClientID = purchase.ClientID;
-            EmployeeID = purchase.EmployeeID;
-            ProductCode = purchase.ProductCode;
+            Client_name = purchase.Client_name;
+            Client_surname = purchase.Client_surname;
+            EmployeeSurname = purchase.EmployeeSurname;
+            ProductName = purchase.ProductName;
             PurchaseDate = purchase.PurchaseDate;
         }
         public Purchase() { }
@@ -49,13 +56,13 @@ namespace ShopManager.DAL.Entities
         public override string ToString()
         {
             // TODO: Query the details of Purchase
-            return $"{ProductCode}: {EmployeeID}, {ClientID}";
+            return $"{ProductName}: {EmployeeSurname}, {Client_name} {Client_surname}";
         }
 
         // Generate string for INSERT TO (EAN, name, net_price, production_country, production_date) !Do aktualizacji!
         public string ToInsert()
         {
-            return $"('{Id}', '{PurchaseDate}', '{ProductCode}', '{ClientID}', {EmployeeID})";
+            return $"('{Id}', '{PurchaseDate}', '{ProductName}', '{Price}, '{Client_name}', '{Client_surname}',  '{EmployeeSurname}')";
         }
         // Check if the object exists
         public override bool Equals(object obj)
@@ -63,7 +70,7 @@ namespace ShopManager.DAL.Entities
             var purchase = obj as Purchase;
             if (purchase is null) return false; // Update the if statements if necessary
             if (PurchaseDate.ToLower() != purchase.PurchaseDate.ToLower()) return false;
-            if (ProductCode != purchase.ProductCode) return false;
+            if (ProductName != purchase.ProductName) return false;
             return true;
         }
         public override int GetHashCode()

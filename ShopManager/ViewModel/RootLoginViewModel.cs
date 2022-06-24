@@ -159,9 +159,9 @@ namespace ShopManager.ViewModel
             firstname = employee.Name;
             secondname = employee.Surname;
             salary = employee.Salary.ToString();
-            sbyte? positionID = employee.PositionID;
-            Position pos = RepoPositions.GetPositionById(positionID);
-            position = pos.Name;
+            string positionName = employee.PositionName;
+            //Position pos = RepoPositions.GetPositionById(positionID);
+            position = positionName;
             
         }
         #endregion

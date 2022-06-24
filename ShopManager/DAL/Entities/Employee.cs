@@ -14,7 +14,7 @@ namespace ShopManager.DAL.Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public decimal Salary { get; set; }
-        public sbyte? PositionID { get; set; }
+        public string PositionName { get; set; }
         #endregion
 
         #region Constructors
@@ -22,18 +22,18 @@ namespace ShopManager.DAL.Entities
         public Employee(MySqlDataReader reader)
         {
             Id = sbyte.Parse(reader["id"].ToString());
-            PositionID = sbyte.Parse(reader["position_id"].ToString());
+            PositionName = reader["position_name"].ToString();
             Name = reader["name"].ToString();
             Surname = reader["surname"].ToString();
             Salary = decimal.Parse(reader["salary"].ToString());
         }
-        public Employee(string name, decimal salary, string surname, sbyte position_id)
+        public Employee(string name, decimal salary, string surname, string position_name)
         {
             Id = null; // Add a proper default value
             Name = name.Trim();
             Surname = surname.Trim();
             Salary = salary;
-            PositionID = position_id;
+            PositionName = position_name;
         }
         public Employee(Employee employee)
         {
@@ -41,7 +41,7 @@ namespace ShopManager.DAL.Entities
             Name = employee.Name;
             Surname = employee.Surname;
             Salary = employee.Salary;
-            PositionID = employee.PositionID;
+            PositionName = employee.PositionName;
         }
         #endregion
 
@@ -54,7 +54,7 @@ namespace ShopManager.DAL.Entities
         // Generate string for INSERT TO (code, place, gross_price, quantity) !Do aktualizacji!
         public string ToInsert()
         {
-            return $"('{Name}', '{Surname}', '{Salary}', '{PositionID}')";
+            return $"('{Name}', '{Surname}', '{Salary}', '{PositionName}')";
         }
         // Check if the object exists
         public override bool Equals(object obj)
@@ -64,7 +64,7 @@ namespace ShopManager.DAL.Entities
             if (Name.ToLower() != employee.Name.ToLower()) return false;
             if (Surname.ToLower() != employee.Surname.ToLower()) return false;
             if (Salary != employee.Salary) return false;
-            if (PositionID != employee.PositionID) return false;
+            if (PositionName != employee.PositionName) return false;
             return true;
         }
         public override int GetHashCode()

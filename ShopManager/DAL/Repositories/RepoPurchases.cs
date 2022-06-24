@@ -20,7 +20,7 @@ namespace ShopManager.DAL.Repositories
         public static ObservableCollection<Purchase> GetClientPurchasesById(Client client)
         {
             ObservableCollection<Purchase> purchases = new ObservableCollection<Purchase>();
-            string CLIENT_PURCHASE = $"SELECT * FROM purchase WHERE client_id='{Convert.ToInt32(client.Id)}'";
+            string CLIENT_PURCHASE = $"SELECT * FROM purchase WHERE client_name='{client.Name}' and client_surname='{client.Surname}'";
             
             using (var connection = DBConnection.Instance.Connection)
             {
@@ -65,7 +65,7 @@ namespace ShopManager.DAL.Repositories
             }
             return state;
         }
-        public static bool EditPurchase(Purchase purchase, sbyte PurchaseID)
+       /* public static bool EditPurchase(Purchase purchase, sbyte PurchaseID)
         {
             bool state = false;
             using (var connection = DBConnection.Instance.Connection)
@@ -81,7 +81,7 @@ namespace ShopManager.DAL.Repositories
                 connection.Close();
             }
             return state;
-        }
+        }*/
         public static bool DeletePurchase(Purchase purchase)
         {
             bool state = false;

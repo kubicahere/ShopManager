@@ -22,7 +22,7 @@ namespace ShopManager.DAL.Entities
         {
             EAN = decimal.Parse(reader["EAN"].ToString());
             Name = reader["name"].ToString();
-            NetPrice = decimal.Parse(reader["net_price"].ToString());
+            NetPrice = decimal.Parse(reader["price"].ToString());
             ProductionCountry = reader["production_country"].ToString();
             ProductionDate = reader["production_date"].ToString();
         }

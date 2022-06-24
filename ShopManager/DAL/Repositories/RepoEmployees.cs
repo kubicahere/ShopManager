@@ -13,7 +13,7 @@ namespace ShopManager.DAL.Repositories
     {
         #region Queries
         private const string ALL_EMPLOYEES = "SELECT * FROM employee";
-        private const string ADD_EMPLOYEE = "INSERT INTO `employee`(`name`, `surname`, `salary`, `position_id`) VALUES ";
+        private const string ADD_EMPLOYEE = "INSERT INTO `employee`(`name`, `surname`, `salary`, `position_name`) VALUES ";
 
         #endregion
        /* public static string GetEmployeePosition(Employee e)
@@ -56,7 +56,7 @@ namespace ShopManager.DAL.Repositories
             using (var connection = DBConnection.Instance.Connection)
             {
                 string EDIT_CLIENT = $"UPDATE employee SET name='{employee.Name}', surname='{employee.Surname}', " +
-                    $"salary={employee.Salary}, position_id='{employee.PositionID}' WHERE id={EmployeeID}";
+                    $"salary={employee.Salary}, position_id='{employee.PositionName}' WHERE id={EmployeeID}";
 
                 MySqlCommand command = new MySqlCommand(EDIT_CLIENT, connection);
                 connection.Open();
