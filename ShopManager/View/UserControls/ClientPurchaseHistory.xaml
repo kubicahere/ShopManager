@@ -5,36 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopManager.View.UserControls" xmlns:com="clr-namespace:ShopManager.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="450">
+             d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="25"
                 Command="{Binding BackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <ListBox BorderBrush="Black" Margin="15,10,0,0" 
-                 Width="175" Height="300" VerticalAlignment="Center" HorizontalAlignment="Left"
+        <ListBox BorderBrush="Black" Margin="15,55,0,0" 
+                 Width="200" Height="300" VerticalAlignment="Top" HorizontalAlignment="Left"
                  SelectionChanged="RaisePurchaseListItemChanged"
                  ItemsSource="{Binding PurchaseList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                  SelectedItem="{Binding SingleSelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 
-        <Label Content="Purchase Date:" Margin="250,75,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock Margin="325,75,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
+        <Label Content="Purchase Date:" Margin="249,55,0,0" Width="90" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Margin="379,60,0,0" Width="170" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
                    Text="{Binding PurchaseDateFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 
-        <Label Content="Product name:" Margin="235,125,0,0" Width="90" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock Margin="325,125,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
+        <Label Content="Product name:" Margin="249,105,0,0" Width="90" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Margin="379,110,0,0" Width="170" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
                    Text="{Binding ProductNameFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 
-        <Label Content="Client name:" Margin="275,175,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock Margin="325,175,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
+        <Label Content="Client name:" Margin="249,155,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Margin="379,160,0,0" Width="170" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
                    Text="{Binding ClientNameFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 
-        <Label Content="Price:" Margin="275,225,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock Margin="325,225,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
+        <Label Content="Price:" Margin="249,205,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Margin="379,210,0,0" Width="170" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" 
                    Text="{Binding PriceFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 

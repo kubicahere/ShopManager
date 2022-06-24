@@ -9,7 +9,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              ResizeMode="NoResize"
         mc:Ignorable="d" 
-             Height="400" Width="450">
+             Height="400" Width="600">
     <Window.Resources>
         <vm:UserLoginViewModel x:Key="viewModel"/>
     </Window.Resources>
@@ -36,7 +36,4 @@
             </local:ClientPurchaseHistory>
         </Grid>
     </Grid>
-   
 </mah:MetroWindow>
-
-    
