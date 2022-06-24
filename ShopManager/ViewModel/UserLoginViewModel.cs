@@ -34,6 +34,15 @@ namespace ShopManager.ViewModel
         private string _productName = string.Empty;
         private string _clientName = string.Empty;
         private string _purchaseListPrice = string.Empty;
+        //ACCOUNT SETTINGS ELEMENTS
+        private string _accountFirstname = string.Empty;
+        private string _accountSurname = string.Empty;
+        private string _accountLogin = string.Empty;
+        private string _accountPassword = string.Empty;
+        private string _accountRepeatPassword = string.Empty;
+        private string _accountEmailAddress = string.Empty;
+        private string _accountPhoneNumber = string.Empty;
+        private string _canEdit = "True";
 
         #endregion
         #region Getters & setters
@@ -53,6 +62,15 @@ namespace ShopManager.ViewModel
         public string productName { get { return _productName; } set { _productName = value; OnPropertyChanged(nameof(productName)); } }
         public string clientName { get { return _clientName; } set { _clientName = value; OnPropertyChanged(nameof(clientName)); } }
         public string purchaseListPrice { get { return _purchaseListPrice; } set { _purchaseListPrice = value; OnPropertyChanged(nameof(purchaseListPrice)); } }
+        //ACCOUNT DATA
+        public string accountFirstname { get { return _accountFirstname; } set { _accountFirstname = value; OnPropertyChanged(nameof(accountFirstname)); } }
+        public string accountSurname { get { return _accountSurname; } set { _accountSurname = value; OnPropertyChanged(nameof(accountSurname)); } }
+        public string accountLogin { get { return _accountLogin; } set { _accountLogin = value; OnPropertyChanged(nameof(accountLogin)); } }
+        public string accountPassword { get { return _accountPassword; } set { _accountPassword = value; OnPropertyChanged(nameof(accountPassword)); } }
+        public string accountRepeatPassword { get { return _accountRepeatPassword; } set { _accountRepeatPassword = value; OnPropertyChanged(nameof(accountRepeatPassword)); } }
+        public string accountEmailAddress { get { return _accountEmailAddress; } set { _accountEmailAddress = value; OnPropertyChanged(nameof(accountEmailAddress)); } }
+        public string accountPhoneNumber { get { return _accountPhoneNumber; } set { _accountPhoneNumber = value; OnPropertyChanged(nameof(accountPhoneNumber)); } }
+        public string canEdit { get { return _canEdit; } set { _canEdit = value; OnPropertyChanged(nameof(canEdit)); } }
 
         #endregion
         public StartWindowViewModel startWindow { get; set; }
@@ -119,6 +137,9 @@ namespace ShopManager.ViewModel
         {
             isVisibleUserWindow = "Hidden";
             isVisibleAccountSettings = "Visible";
+            Client client = new Client();
+            client = RepoClients.GetClientByLoginAndPasswd(login, password);
+            accountLogin = client.Login;
         }
         #endregion
         #region Purchase window methods
@@ -163,7 +184,7 @@ namespace ShopManager.ViewModel
         }
         public void EditUser(object sender)
         {
-
+            //TODO
         }
 
         #endregion

@@ -402,7 +402,7 @@ namespace ShopManager.ViewModel
             {
                 if (_editBackButton == null)
                 {
-                    _editBackButton = new RelayCommand(userLoginViewModel.BackButton, arg => true);
+                    _editBackButton = new RelayCommand(userLoginViewModel.SettingsBackButton, arg => true);
                 }
                 return _editBackButton;
             }

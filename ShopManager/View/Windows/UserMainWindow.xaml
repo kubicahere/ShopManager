@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-             xmlns:local="clr-namespace:ShopManager.View.UserControls" xmlns:com="clr-namespace:ShopManager.Components"
+             xmlns:local="clr-namespace:ShopManager.View.UserControls"
+             xmlns:com="clr-namespace:ShopManager.Components"
              xmlns:vm="clr-namespace:ShopManager.ViewModel"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              ResizeMode="NoResize"
@@ -36,17 +37,17 @@
             </local:ClientPurchaseHistory>
         </Grid>
         <!--TODO-->
-        <Grid Visibility="{Binding registerWindowViewModel.isVisible}">
-            <local:UserAccount BackButton="{Binding RegisterBackButton}" 
-                                Register="{Binding RegisterUser}"
-                                Firstname="{Binding registerWindowViewModel.firstName, Mode=TwoWay}"
-                                Surname="{Binding registerWindowViewModel.surname, Mode=TwoWay}"
-                                Login="{Binding registerWindowViewModel.login, Mode=TwoWay}"
-                                Password="{Binding registerWindowViewModel.password, Mode=TwoWay}"
-                                RepeatPassword="{Binding registerWindowViewModel.repeatPassword, Mode=TwoWay}"
-                                PhoneNumber="{Binding registerWindowViewModel.phoneNumber, Mode=TwoWay}" 
-                                EmailAddress="{Binding registerWindowViewModel.emailAddress, Mode=TwoWay}"
-                                CanRegister="{Binding registerWindowViewModel.canRegister}"/>
+        <Grid Visibility="{Binding isVisibleAccountSettings}">
+            <local:UserAccount BackButton="{Binding viewModel.EditBackButton}" 
+                                Edit="{Binding viewModel.EditUser}"
+                                Firstname="{Binding accountFirstname, Mode=TwoWay}"
+                                Surname="{Binding accountSurname, Mode=TwoWay}"
+                                Login="{Binding accountLogin, Mode=TwoWay}"
+                                Password="{Binding accountPassword, Mode=TwoWay}"
+                                RepeatPassword="{Binding accountRepeatPassword, Mode=TwoWay}"
+                                PhoneNumber="{Binding accountPhoneNumber, Mode=TwoWay}" 
+                                EmailAddress="{Binding accountEmailAddress, Mode=TwoWay}"
+                                CanChange="{Binding canEdit}"/>
         </Grid>
     </Grid>
 </mah:MetroWindow>
