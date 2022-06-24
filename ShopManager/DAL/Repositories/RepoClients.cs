@@ -66,13 +66,13 @@ namespace ShopManager.DAL.Repositories
             }
             return state;
         }
-        public static bool EditClient(Client client, sbyte ClientID)
+        public static bool EditClient(Client client, int ClientID)
         {
             bool state = false;
             using (var connection = DBConnection.Instance.Connection)
             {
-                string EDIT_CLIENT = $"UPDATE client SET login='{client.Login}', password='{client.Password}', name='{client.Name}', nazwisko='{client.Surname}', " +
-                    $"email={client.Email}, phone='{client.Phone}' WHERE id={ClientID}";
+                string EDIT_CLIENT = $"UPDATE client SET login='{client.Login}', passwd='{client.Password}', name='{client.Name}', surname='{client.Surname}', " +
+                    $"email='{client.Email}', phone='{client.Phone}' WHERE id='{ClientID}'";
 
                 MySqlCommand command = new MySqlCommand(EDIT_CLIENT, connection);
                 connection.Open();

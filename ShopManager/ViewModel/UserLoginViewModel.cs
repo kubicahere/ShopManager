@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -176,7 +177,37 @@ namespace ShopManager.ViewModel
         }
         #endregion
         #region Account Setting window methods
-        //todo check data
+        public bool EditCheckData()
+        {
+            string mailPattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+                             + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+                             + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+            accountPhoneNumber = accountPhoneNumber.Trim(); accountEmailAddress = accountEmailAddress.Trim(); accountEmailAddress = accountEmailAddress.ToLower();
+            if (accountPassword == string.Empty | accountRepeatPassword == string.Empty | accountPhoneNumber == string.Empty | accountEmailAddress == string.Empty)
+            { MessageBox.Show("Fill data!"); return false; }
+            if (accountPassword.Length < 3 || accountPassword.Length > 15 || accountPassword == string.Empty)
+            { MessageBox.Show("Bad password!"); return false; }
+            if ((!string.Equals(accountPassword, accountRepeatPassword)) || (accountPassword == string.Empty & accountRepeatPassword == string.Empty))
+            { MessageBox.Show("Different passwords!"); return false; }
+            if (accountFirstname == string.Empty || accountFirstname.Length < 3 || accountFirstname.Length > 15)
+            { MessageBox.Show("Bad firstname!"); return false; }
+            if (accountSurname == string.Empty || accountSurname.Length < 3 || accountSurname.Length > 15)
+            { MessageBox.Show("Bad surname!"); return false; }
+            if (!(Regex.Match(accountPhoneNumber, @"(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)").Success))
+            { MessageBox.Show("Bad phone number!"); return false; }
+            if (!(Regex.Match(accountEmailAddress, mailPattern).Success))
+            { MessageBox.Show("Bad e-mail address!"); return false; }
+            return true;
+        }
+        public void ClearEditData()
+        {
+            accountFirstname = string.Empty;
+            accountSurname = string.Empty;
+            accountPassword = string.Empty;
+            accountRepeatPassword = string.Empty;
+            accountPhoneNumber = string.Empty;
+            accountEmailAddress = string.Empty;
+        }
         public void SettingsBackButton(object sender)
         {
             isVisibleAccountSettings = "Hidden";
@@ -184,7 +215,16 @@ namespace ShopManager.ViewModel
         }
         public void EditUser(object sender)
         {
-            //TODO
+            if (!EditCheckData()) return;
+            canEdit = "False";
+            Client client = new Client();
+            client = RepoClients.GetClientByLoginAndPasswd(login, password);
+            var user = new Client(accountLogin, accountPassword, accountFirstname, accountSurname, accountEmailAddress, accountPhoneNumber);
+            if (RepoClients.EditClient(user, (int)client.Id))
+            {
+                ClearEditData();
+                MessageBox.Show("Success!");
+            }
         }
 
         #endregion
