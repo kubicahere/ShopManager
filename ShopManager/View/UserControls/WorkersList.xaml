@@ -10,12 +10,32 @@
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="25"
                 Command="{Binding BackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <ListBox BorderBrush="Black" Margin="15,0,0,0" 
+        <ListBox BorderBrush="Black" Margin="15,10,0,0" 
                  Width="175" Height="300" VerticalAlignment="Center" HorizontalAlignment="Left"
                  SelectionChanged="RaiseWorkersListItemChanged"
                  ItemsSource="{Binding WorkerList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                  SelectedItem="{Binding SingleSelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+        
+        <Label Content="First name:" Margin="250,75,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Margin="325,75,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
+                   Text="{Binding FirstNameFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+        <Label Content="Second name:" Margin="235,125,0,0" Width="90" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Margin="325,125,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
+                   Text="{Binding SecondNameFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+        <Label Content="Salary:" Margin="275,175,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Margin="325,175,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
+                   Text="{Binding SalaryFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+        <Label Content="Position:" Margin="265,225,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Margin="325,225,0,0" Width="80" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"
+                   Text="{Binding PositionFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 
     </Grid>

@@ -14,8 +14,13 @@ namespace ShopManager.DAL.Repositories
         #region Queries
         private const string ALL_EMPLOYEES = "SELECT * FROM employee";
         private const string ADD_EMPLOYEE = "INSERT INTO `employee`(`name`, `surname`, `salary`, `position_id`) VALUES ";
-        #endregion
 
+        #endregion
+        public static string GetEmployeePosition(Employee e)
+        {
+            e = new Employee();
+            string select = $"SELECT {e.PositionID} FROM POSITION WHERE employee.id ={e.Id}";
+        }
         #region CRUD Methods
         public static List<Employee> GetAllEmployees()
         {

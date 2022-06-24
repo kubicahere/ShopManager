@@ -36,6 +36,18 @@ namespace ShopManager.View.UserControls
         public static readonly DependencyProperty SingleSelectedItemProperty = DependencyProperty.Register(
            "SingleSelectedItem", typeof(string), typeof(WorkersList), new FrameworkPropertyMetadata(null)
            );
+        public static readonly DependencyProperty FirstNameFillProperty = DependencyProperty.Register(
+           "FirstNameFill", typeof(string), typeof(WorkersList), new FrameworkPropertyMetadata(null)
+           );
+        public static readonly DependencyProperty SecondNameFillProperty = DependencyProperty.Register(
+          "SecondNameFill", typeof(string), typeof(WorkersList), new FrameworkPropertyMetadata(null)
+          );
+        public static readonly DependencyProperty SalaryFillProperty = DependencyProperty.Register(
+          "SalaryFill", typeof(string), typeof(WorkersList), new FrameworkPropertyMetadata(null)
+          );
+        public static readonly DependencyProperty PositionFillProperty = DependencyProperty.Register(
+          "PositionFill", typeof(string), typeof(WorkersList), new FrameworkPropertyMetadata(null)
+          );
         #endregion
         #region Getters & setters
         public ICommand BackButton

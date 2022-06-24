@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopManager.View.UserControls" xmlns:com="clr-namespace:ShopManager.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="450">
+             d:DesignHeight="400" d:DesignWidth="450">
     <Grid>
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="25"
                 Command="{Binding BackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 

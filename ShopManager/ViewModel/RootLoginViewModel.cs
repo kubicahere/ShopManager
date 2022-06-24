@@ -33,6 +33,11 @@ namespace ShopManager.ViewModel
         //purchases list
         private ObservableCollection<string> _listOfTotalPurchases = new ObservableCollection<string>();
         private string _selectedPurchase = string.Empty;
+        //single employee data
+        private string _firstname = string.Empty;
+        private string _secondname = string.Empty;
+        private string _salary = string.Empty;
+        private string _position = string.Empty;
         #endregion
 
         #region Getters & setters
@@ -51,6 +56,10 @@ namespace ShopManager.ViewModel
         public ObservableCollection<string> listOfInfo { get { return _listOfInfo; } set { _listOfInfo = value; OnPropertyChanged(nameof(listOfInfo)); } }
         public ObservableCollection<string> listOfTotalPurchases { get { return _listOfTotalPurchases; } set { _listOfTotalPurchases = value; OnPropertyChanged(nameof(listOfTotalPurchases)); } }
         public string selectedPurchase { get { return _selectedPurchase; } set { _selectedPurchase = value; OnPropertyChanged(nameof(selectedPurchase)); } }
+        public string firstname { get { return _firstname; } set { _firstname = value; OnPropertyChanged(nameof(firstname)); } }
+        public string secondname { get { return _secondname; } set { _secondname = value; OnPropertyChanged(nameof(secondname)); } }
+        public string salary { get { return _salary; } set { _salary = value; OnPropertyChanged(nameof(salary)); } }
+        public string position { get { return _position; } set { _position = value; OnPropertyChanged(nameof(position)); } }
         #endregion
 
         #region ViewModel instances
@@ -135,7 +144,13 @@ namespace ShopManager.ViewModel
         }
         public void WorkersListChanged(object sender)
         {
-            MessageBox.Show("LIST CHANGED");
+            Employee employee = new Employee();
+            int index = listOfWorkers.IndexOf(selectedWorker);
+            string[] elements = listOfWorkers[index].ToString().Split(',');
+            firstname = elements[0];
+            secondname = elements[1];
+            salary = elements[2];
+            salary =
         }
         #endregion
         #region TotalPurchaseList window methods
