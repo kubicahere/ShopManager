@@ -8,18 +8,37 @@
              d:DesignHeight="400" d:DesignWidth="450">
     <Grid>
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="25"
-                Command="{Binding BackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+                Command="{Binding ProductBackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         <Label Content="EAN:" HorizontalAlignment="Left" Margin="44,51,0,0" VerticalAlignment="Top" FontSize="15" Width="141"/>
-        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" />
+        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"
+                 Text="{Binding EAN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+        
         <Label Content="Name:" HorizontalAlignment="Left" Margin="44,101,0,0" VerticalAlignment="Top" FontSize="15" Width="141"/>
-        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" />
-        <Button Content="ADD PRODUCT" HorizontalAlignment="Center" Margin="0,337,0,0" VerticalAlignment="Top" Height="31" Width="178" FontSize="12"/>
-        <Label Content="Net price:" HorizontalAlignment="Left" Margin="44,146,0,0" VerticalAlignment="Top" FontSize="15" Width="141"/>
-        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" />
+        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"
+                 Text="{Binding ProductName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+        <Label Content="Price:" HorizontalAlignment="Left" Margin="44,146,0,0" VerticalAlignment="Top" FontSize="15" Width="141"/>
+        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"
+                 Text="{Binding ProductPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+        
         <Label Content="Production country:" HorizontalAlignment="Left" Margin="44,196,0,0" VerticalAlignment="Top" FontSize="15" Width="141"/>
-        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" />
+        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"
+                 Text="{Binding ProductionCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+        
         <Label Content="Production date:" HorizontalAlignment="Left" Margin="44,245,0,0" VerticalAlignment="Top" FontSize="15" Width="141"/>
-        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" />
+        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"
+                 Text="{Binding ProductionDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+        
+        <Button Content="ADD PRODUCT" HorizontalAlignment="Center" Margin="0,337,0,0" VerticalAlignment="Top" Height="31" Width="178" FontSize="12"
+                IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" 
+                Command="{Binding AddProduct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
     </Grid>
 </UserControl>

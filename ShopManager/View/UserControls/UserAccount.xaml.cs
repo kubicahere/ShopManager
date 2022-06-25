@@ -110,7 +110,7 @@ namespace ShopManager.View.UserControls
         #endregion
         #region Events
         public static readonly RoutedEvent BackButtonClickEvent =
-            EventManager.RegisterRoutedEvent("OtherEditBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RegisterControl));
+            EventManager.RegisterRoutedEvent("OtherEditBackButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(UserAccount));
         public event RoutedEventHandler BackButtonClick
         {
             add { AddHandler(BackButtonClickEvent, value); }
@@ -122,7 +122,7 @@ namespace ShopManager.View.UserControls
             RaiseEvent(args);
         }
         public static readonly RoutedEvent EditClickEvent =
-            EventManager.RegisterRoutedEvent("OtherEditClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RegisterControl));
+            EventManager.RegisterRoutedEvent("OtherEditClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(UserAccount));
         public event RoutedEventHandler EditClick
         {
             add { AddHandler(EditClickEvent, value); }
