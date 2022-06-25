@@ -13,7 +13,7 @@ namespace ShopManager.DAL.Repositories
     {
         #region Queries
         private const string ALL_PRODUCTS = "SELECT * FROM product";
-        private const string ADD_PRODUCT = "INSERT INTO `product`(`EAN`, `name`, `net_price`, `production_country`, 'production_date') VALUES ";
+        private const string ADD_PRODUCT = "INSERT INTO `product`(`EAN`, `name`, `price`, `production_country`, `production_date`) VALUES ";
         #endregion
 
         #region CRUD Methods
@@ -37,6 +37,7 @@ namespace ShopManager.DAL.Repositories
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand($"{ADD_PRODUCT} {product.ToInsert()}", connection);
+                //MySqlCommand command = new MySqlCommand("INSERT INTO `product`(`EAN`, `name`, `net_price`, `production_country`, 'production_date') VALUES " $"")
                 connection.Open();
                 var id = command.ExecuteNonQuery();
                 state = true;

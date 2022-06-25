@@ -212,8 +212,8 @@ namespace ShopManager.ViewModel
         #region AddProducts window methods
         public bool AddProductCheckData()
         {
-            var date_format = "yyyy/MM/dd";
-            DateTime dt;
+            //var date_format = "yyyy-MM-dd";
+            //DateTime dt;
             ean = ean.Trim(); addProductName = addProductName.Trim(); addProductPrice = addProductPrice.Trim();
             addProductionCountry = addProductionCountry.Trim(); addProductionDate = addProductionDate.Trim();
             if (ean == string.Empty | addProductName == string.Empty | addProductPrice == string.Empty | addProductionCountry == string.Empty | addProductionDate == string.Empty)
@@ -226,7 +226,7 @@ namespace ShopManager.ViewModel
             { MessageBox.Show("Bad product price!"); return false; }
             if (addProductionCountry == string.Empty || addProductionCountry.Length < 2)
             { MessageBox.Show("Bad production country!"); return false; }
-            if (addProductionDate == string.Empty || !DateTime.TryParseExact(addProductionDate, date_format, null, DateTimeStyles.None, out dt))
+            if (addProductionDate == string.Empty)
             { MessageBox.Show("Invalid date!"); return false; }
             return true;
         }
@@ -247,10 +247,12 @@ namespace ShopManager.ViewModel
         }
         public void AddProductsButton(object sender)
         {
-            MessageBox.Show(ean + " " + addProductName + " " + addProductPrice + " " + addProductionCountry + " " + addProductionDate);
+            string[] tempDate = addProductionDate.Split(".");
+            string validDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0];
+            MessageBox.Show(ean + " " + addProductName + " " + addProductPrice + " " + addProductionCountry + " " + validDate);
             if (!AddProductCheckData()) return;
             canAddProduct = "False";
-            var product = new Product(ean, addProductName, decimal.Parse(addProductPrice), addProductionCountry, addProductionDate);
+            var product = new Product(ean, addProductName, decimal.Parse(addProductPrice), addProductionCountry, validDate);
             if(RepoProducts.AddProduct(product))
             {
                 AddProductClearData();

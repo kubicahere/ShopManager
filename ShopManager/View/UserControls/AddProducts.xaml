@@ -31,7 +31,7 @@
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         
         <Label Content="Production date:" HorizontalAlignment="Left" Margin="44,245,0,0" VerticalAlignment="Top" FontSize="15" Width="141"/>
-        <TextBox BorderBrush="Black" HorizontalAlignment="Left" Margin="202,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"
+        <DatePicker BorderBrush="Black" HorizontalAlignment="Left" Margin="202,249,0,0" VerticalAlignment="Top" Width="200"
                  Text="{Binding ProductionDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         

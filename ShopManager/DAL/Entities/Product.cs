@@ -24,14 +24,14 @@ namespace ShopManager.DAL.Entities
             Name = reader["name"].ToString();
             NetPrice = decimal.Parse(reader["price"].ToString());
             ProductionCountry = reader["production_country"].ToString();
-            ProductionDate = reader["production_date"].ToString();
+            ProductionDate =reader["production_date"].ToString();
         }
         public Product(string ean, string name, decimal net_price, string production_country, string production_date)
         {
             EAN = ean;
             Name = name.Trim();
             ProductionCountry = production_country.Trim();
-            ProductionDate = production_date.Trim();
+            ProductionDate = production_date;
             NetPrice = net_price;
         }
         public Product(Product product)
@@ -62,7 +62,7 @@ namespace ShopManager.DAL.Entities
             if (product is null) return false;
             if (Name.ToLower() != product.Name.ToLower()) return false;
             if (ProductionCountry.ToLower() != product.ProductionCountry.ToLower()) return false;
-            if (ProductionDate.ToLower() != product.ProductionDate.ToLower()) return false;
+            //if (ProductionDate.ToLower() != product.ProductionDate.ToLower()) return false;
             if (NetPrice != product.NetPrice) return false;
             return true;
         }
