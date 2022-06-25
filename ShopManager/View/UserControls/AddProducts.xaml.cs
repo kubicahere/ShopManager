@@ -32,7 +32,7 @@ namespace ShopManager.View.UserControls
             "AddProduct", typeof(ICommand), typeof(AddProducts), new FrameworkPropertyMetadata(null)
             );
         public static readonly DependencyProperty EANProperty = DependencyProperty.Register(
-            "EAN", typeof(ICommand), typeof(AddProducts), new FrameworkPropertyMetadata(null)
+            "EAN", typeof(string), typeof(AddProducts), new FrameworkPropertyMetadata(null)
             );
         public static readonly DependencyProperty ProductNameProperty = DependencyProperty.Register(
             "ProductName", typeof(string), typeof(AddProducts), new FrameworkPropertyMetadata(null)

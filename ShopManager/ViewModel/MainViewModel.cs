@@ -408,5 +408,31 @@ namespace ShopManager.ViewModel
             }
         }
         #endregion
+        #region ICommand AddProducts
+        private ICommand _addProductsBackButton = null;
+        public ICommand addProductsBackButton
+        {
+            get
+            {
+                if(_addProductsBackButton == null)
+                {
+                    _addProductsBackButton = new RelayCommand(rootLoginViewModel.AddProductsBackButton, arg => true);
+                }
+                return _addProductsBackButton;
+            }
+        }
+        private ICommand _addProductsButton = null;
+        public ICommand addProductsButton
+        {
+            get
+            {
+                if(_addProductsButton == null)
+                {
+                    _addProductsButton = new RelayCommand(rootLoginViewModel.AddProductsButton, arg => true);
+                }
+                return _addProductsButton;
+            }
+        }
+        #endregion
     }
 }

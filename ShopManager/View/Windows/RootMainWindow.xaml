@@ -19,6 +19,18 @@
                                ShowWorkersList="{Binding viewModel.showWorkers}" 
                                ShowPurchaseList="{Binding viewModel.showPurchases}"/>
         </Grid>
+        <!--TODO-->
+        <Grid Visibility="{Binding isVisibleProducts}">
+            <local:AddProducts ProductBackButton="{Binding viewModel.addProductsBackButton}"
+                               EAN="{Binding ean, Mode=TwoWay}"
+                               ProductName="{Binding addProductName, Mode=TwoWay}"
+                               ProductPrice="{Binding addProductPrice, Mode=TwoWay}"
+                               ProductionCountry="{Binding addProductionCountry, Mode=TwoWay}"
+                               ProductionDate="{Binding addProductionDate, Mode=TwoWay}"
+                               CanAdd="{Binding canAddProduct}"
+                               AddProduct="{Binding viewModel.addProductsButton}">
+            </local:AddProducts>
+        </Grid>
         <Grid Visibility="{Binding isVisibleWorkersList}">
             <local:WorkersList BackButton="{Binding viewModel.workersBackButton}"
                                WorkerList="{Binding listOfWorkers}"

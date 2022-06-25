@@ -40,7 +40,7 @@ namespace ShopManager.DAL.Repositories
                 connection.Open();
                 var id = command.ExecuteNonQuery();
                 state = true;
-                product.EAN = (decimal)command.LastInsertedId;
+                //product.EAN = (string)command.LastInsertedId;
                 connection.Close();
             }
             return state;

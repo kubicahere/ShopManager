@@ -6,6 +6,7 @@ using ShopManager.ViewModel.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,13 @@ namespace ShopManager.ViewModel
         private string _productName = string.Empty;
         private string _clientName = string.Empty;
         private string _purchaseListPrice = string.Empty;
+        //add products window
+        private string _ean = string.Empty;
+        private string _addProductName = string.Empty;
+        private string _addProductPrice = string.Empty;
+        private string _addProductionCountry = string.Empty;
+        private string _addProductionDate = string.Empty;
+        private string _canAddProduct = "True";
         #endregion
 
         #region Getters & setters
@@ -70,6 +78,13 @@ namespace ShopManager.ViewModel
         public string productName { get { return _productName; } set { _productName = value; OnPropertyChanged(nameof(productName)); } }
         public string clientName { get { return _clientName; } set { _clientName = value; OnPropertyChanged(nameof(clientName)); } }
         public string purchaseListPrice { get { return _purchaseListPrice; } set { _purchaseListPrice = value; OnPropertyChanged(nameof(purchaseListPrice)); } }
+        public string ean { get { return _ean; } set { _ean = value; OnPropertyChanged(nameof(ean)); } }
+        public string addProductName { get { return _addProductName; } set { _addProductName = value; OnPropertyChanged(nameof(addProductName)); } }
+        public string addProductPrice { get { return _addProductPrice; } set { _addProductPrice = value; OnPropertyChanged(nameof(addProductPrice)); } }
+        public string addProductionCountry { get { return _addProductionCountry; } set { _addProductionCountry = value; OnPropertyChanged(nameof(addProductionCountry)); } }
+        public string addProductionDate { get { return _addProductionDate; } set { _addProductionDate = value; OnPropertyChanged(nameof(addProductionDate)); } }
+        public string canAddProduct { get { return _canAddProduct; } set { _canAddProduct = value; OnPropertyChanged(nameof(canAddProduct)); } }
+
 
         #endregion
 
@@ -124,6 +139,7 @@ namespace ShopManager.ViewModel
         {
             isVisibleRootWindow = "Hidden";
             isVisibleProducts = "Visible";
+            //AddProductsButton(true);
         }
         public void WorkersList(object sender)
         {
@@ -191,6 +207,55 @@ namespace ShopManager.ViewModel
             productName = purchase.ProductName;
             clientName = purchase.Client_name + " " + purchase.Client_surname;
             purchaseListPrice = purchase.Price.ToString();
+        }
+        #endregion
+        #region AddProducts window methods
+        public bool AddProductCheckData()
+        {
+            var date_format = "yyyy/MM/dd";
+            DateTime dt;
+            ean = ean.Trim(); addProductName = addProductName.Trim(); addProductPrice = addProductPrice.Trim();
+            addProductionCountry = addProductionCountry.Trim(); addProductionDate = addProductionDate.Trim();
+            if (ean == string.Empty | addProductName == string.Empty | addProductPrice == string.Empty | addProductionCountry == string.Empty | addProductionDate == string.Empty)
+            { MessageBox.Show("Fill data!"); return false; }
+            if (ean.Length < 3 || ean.Length > 15)
+            { MessageBox.Show("Bad EAN!"); return false; }
+            if (addProductName.Length < 2 || addProductName.Length > 15 || addProductName == string.Empty)
+            { MessageBox.Show("Bad product name!"); return false; }
+            if (addProductPrice == string.Empty || !decimal.TryParse(addProductPrice, out _))
+            { MessageBox.Show("Bad product price!"); return false; }
+            if (addProductionCountry == string.Empty || addProductionCountry.Length < 2)
+            { MessageBox.Show("Bad production country!"); return false; }
+            if (addProductionDate == string.Empty || !DateTime.TryParseExact(addProductionDate, date_format, null, DateTimeStyles.None, out dt))
+            { MessageBox.Show("Invalid date!"); return false; }
+            return true;
+        }
+        public void AddProductClearData()
+        {
+            ean = string.Empty;
+            addProductName = string.Empty;
+            addProductPrice = string.Empty;
+            addProductionCountry = string.Empty;
+            addProductionDate = string.Empty;
+        }
+        public void AddProductsBackButton(object sender)
+        {
+            AddProductClearData();
+            canAddProduct = "True";
+            isVisibleRootWindow = "Visible";
+            isVisibleProducts = "Hidden";
+        }
+        public void AddProductsButton(object sender)
+        {
+            MessageBox.Show(ean + " " + addProductName + " " + addProductPrice + " " + addProductionCountry + " " + addProductionDate);
+            if (!AddProductCheckData()) return;
+            canAddProduct = "False";
+            var product = new Product(ean, addProductName, decimal.Parse(addProductPrice), addProductionCountry, addProductionDate);
+            if(RepoProducts.AddProduct(product))
+            {
+                AddProductClearData();
+            }
+
         }
         #endregion
     }
