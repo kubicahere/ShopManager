@@ -158,7 +158,7 @@ namespace ShopManager.ViewModel
         public void LoadWorkers(object sender)
         {
             listOfWorkers.Clear();
-            List<Employee> tmp = RepoEmployees.GetAllEmployees();
+            ObservableCollection<Employee> tmp = RepoEmployees.GetAllEmployees();
             for(int i = 0; i < tmp.Count; i++)
             {
                 listOfWorkers.Add(tmp[i].ToString());

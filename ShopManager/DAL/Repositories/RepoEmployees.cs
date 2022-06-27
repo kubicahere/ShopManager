@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace ShopManager.DAL.Repositories
 {
     using Entities;
+    using System.Collections.ObjectModel;
+
     static class RepoEmployees
     {
         #region Queries
@@ -22,9 +24,9 @@ namespace ShopManager.DAL.Repositories
             //string select = $"SELECT {e.PositionID} FROM POSITION WHERE employee.id ={e.Id}";
         }*/
         #region CRUD Methods
-        public static List<Employee> GetAllEmployees()
+        public static ObservableCollection<Employee> GetAllEmployees()
         {
-            List<Employee> employees = new List<Employee>();
+            ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand(ALL_EMPLOYEES, connection);

@@ -21,6 +21,13 @@
                                PurchaseList="{Binding viewModel.purchaseHistoryClick}" 
                                AccountSettings="{Binding viewModel.accountSettingsClick}"/>
         </Grid>
+        <Grid Visibility="{Binding isVisibleBuying}">
+            <local:UserShopping ShoppingBackButton="{Binding viewModel.buyProductsBackButton}"
+                                         ProductsList="{Binding listOfProducts, Mode=TwoWay}"
+                                         SingleSelectedProduct="{Binding selectedProduct, Mode=TwoWay}"
+                                         BuyButton="{Binding viewModel.buyProductsButton}">
+            </local:UserShopping>
+        </Grid>
         <Grid Visibility="{Binding isVisiblePurchaseHistory}">
             <local:ClientPurchaseHistory BackButton="{Binding viewModel.purchaseBackButton}"
                                          PurchaseList="{Binding listOfTransactions, Mode=TwoWay}"
@@ -36,7 +43,6 @@
                 </i:Interaction.Triggers>
             </local:ClientPurchaseHistory>
         </Grid>
-        <!--TODO-->
         <Grid Visibility="{Binding isVisibleAccountSettings}">
             <local:UserAccount BackButton="{Binding viewModel.EditBackButton}" 
                                 Edit="{Binding viewModel.EditUser}"

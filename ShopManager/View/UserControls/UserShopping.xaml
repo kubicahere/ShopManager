@@ -12,7 +12,6 @@
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         <ListBox BorderBrush="Black" Margin="0,35,0,0" 
                  Width="200" Height="300" VerticalAlignment="Top" HorizontalAlignment="Center"
-                 SelectionChanged="RaiseWorkersListItemChanged"
                  ItemsSource="{Binding ProductsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                  SelectedItem="{Binding SingleSelectedProduct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 

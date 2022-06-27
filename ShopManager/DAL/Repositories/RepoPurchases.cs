@@ -16,7 +16,7 @@ namespace ShopManager.DAL.Repositories
     {
         #region Queries
         private const string ALL_PURCHASE = "SELECT * FROM purchase";
-        private const string ADD_PURCHASE = "INSERT INTO `purchase`(`purchase_date`, `product_code`, `client_id`, 'employee_id') VALUES ";
+        private const string ADD_PURCHASE = "INSERT INTO `purchase`(`id`, `purchase_date`, `product_name`, `price`, `client_name`,`client_surname`, `employee_surname`) VALUES ";
         public static ObservableCollection<Purchase> GetClientPurchasesById(Client client)
         {
             ObservableCollection<Purchase> purchases = new ObservableCollection<Purchase>();
@@ -32,6 +32,21 @@ namespace ShopManager.DAL.Repositories
                 connection.Close();
             }
             return purchases;
+        }
+        public static sbyte? GetLastPurchaseID()
+        {
+            string LAST_PURCHASE = $"select * from purchase order by 1 desc limit 1";
+            Purchase purchase = new Purchase();
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand(LAST_PURCHASE, connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                    purchase = new Purchase(reader);
+                connection.Close();
+            }
+            return purchase.Id;
         }
         
         #endregion
@@ -57,6 +72,7 @@ namespace ShopManager.DAL.Repositories
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand($"{ADD_PURCHASE} {purchase.ToInsert()}", connection);
+                MessageBox.Show($"{ADD_PURCHASE} {purchase.ToInsert()}");
                 connection.Open();
                 var id = command.ExecuteNonQuery();
                 state = true;

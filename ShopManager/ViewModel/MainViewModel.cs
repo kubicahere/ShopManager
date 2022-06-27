@@ -434,5 +434,43 @@ namespace ShopManager.ViewModel
             }
         }
         #endregion
+        #region ICommand UserShopping
+        private ICommand _buyProductsBackButton = null;
+        public ICommand buyProductsBackButton
+        {
+            get
+            {
+                if (_buyProductsBackButton == null)
+                {
+                    _buyProductsBackButton = new RelayCommand(userLoginViewModel.ShoppingBackButton, arg => true); 
+                }
+                return _buyProductsBackButton;
+            }
+        }
+        private ICommand _buyProductsButton = null;
+        public ICommand buyProductsButton
+        {
+            get
+            {
+                if (_buyProductsButton == null)
+                {
+                    _buyProductsButton = new RelayCommand(userLoginViewModel.BuyButtonClick, arg => true); //todo
+                }
+                return _buyProductsButton;
+            }
+        }
+        private ICommand _productsList = null;
+        public ICommand productsList
+        {
+            get
+            {
+                if (_productsList == null)
+                {
+                    _productsList = new RelayCommand(userLoginViewModel.LoadProducts, arg => true); //todo
+                }
+                return _productsList;
+            }
+        }
+        #endregion
     }
 }

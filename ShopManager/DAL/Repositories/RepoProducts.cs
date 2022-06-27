@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace ShopManager.DAL.Repositories
 {
     using Entities;
+    using System.Collections.ObjectModel;
+
     static class RepoProducts
     {
         #region Queries
@@ -17,9 +19,9 @@ namespace ShopManager.DAL.Repositories
         #endregion
 
         #region CRUD Methods
-        public static List<Product> GetAllProducts()
+        public static ObservableCollection<Product> GetAllProducts()
         {
-            List<Product> products = new List<Product>();
+            ObservableCollection<Product> products = new ObservableCollection<Product>();
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand(ALL_PRODUCTS, connection);

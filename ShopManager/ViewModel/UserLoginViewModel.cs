@@ -6,6 +6,7 @@ using ShopManager.ViewModel.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,7 +21,7 @@ namespace ShopManager.ViewModel
         private string _isVisible = "Hidden";
         private string _login = string.Empty;
         private string _password = string.Empty;
-        private ObservableCollection<string> _listOfProducts;
+        private ObservableCollection<string> _listOfProducts = new ObservableCollection<string>();
         private ObservableCollection<Purchase> _listOfPurchases;
         private string _selectedProduct = null;
         //VISIBILITY OF BUYING ETC
@@ -125,6 +126,7 @@ namespace ShopManager.ViewModel
         {
             isVisibleUserWindow = "Hidden";
             isVisibleBuying = "Visible";
+            LoadProducts(true);
         }
         public void PurchaseHistory(object sender)
         {
@@ -161,7 +163,6 @@ namespace ShopManager.ViewModel
         {
             isVisiblePurchaseHistory = "Hidden";
             isVisibleUserWindow = "Visible";
-            //selectedTransaction = string.Empty;
         }
         public void PurchaseListChanged(object sender)
         {
@@ -235,6 +236,48 @@ namespace ShopManager.ViewModel
             }
         }
 
+        #endregion
+        #region UserShopping window methods
+        public void ShoppingBackButton(object sender)
+        {
+            isVisibleUserWindow = "Visible";
+            isVisibleBuying = "Hidden";
+        }
+        public void LoadProducts(object sender)
+        {
+            listOfProducts.Clear();
+            ObservableCollection<Product> products = RepoProducts.GetAllProducts();
+            for(int i = 0; i < products.Count; i++)
+            {
+                listOfProducts.Add(products[i].ToString());
+            }
+        }
+        public void ProductsListChanged(object sender)
+        {
+            if (listOfProducts.IndexOf(selectedProduct) == -1) return; 
+        }
+        public void BuyButtonClick(object sender)
+        {
+            int index = listOfProducts.IndexOf(selectedProduct);
+            if(index == -1) return;
+            ObservableCollection<Product> productsList = RepoProducts.GetAllProducts();
+            Product singleProduct = new Product(productsList[index]);
+            Client singleClient = RepoClients.GetClientByLoginAndPasswd(login, password);
+            DateTime dt = DateTime.Today;
+            string todayDate = dt.ToString("d");
+            productName = singleProduct.Name;
+            ObservableCollection<Employee> employees = RepoEmployees.GetAllEmployees();
+            Random random = new Random();
+            Employee employee = employees[random.Next(employees.Count)];
+            sbyte? lastIndex = RepoPurchases.GetLastPurchaseID();
+            CultureInfo culture = new CultureInfo("en-US");
+
+            Purchase purchase = new Purchase(lastIndex, todayDate, singleClient.Name, singleClient.Surname, singleProduct.Name, employee.Surname, Convert.ToDecimal(singleProduct.NetPrice, culture));
+            if(RepoPurchases.AddPurchase(purchase))
+            {
+                selectedProduct = string.Empty;
+            }
+        }
         #endregion
     }
 }

@@ -31,9 +31,19 @@ namespace ShopManager.DAL.Entities
             Price = decimal.Parse(reader["price"].ToString());
             
         }
-        public Purchase(string clientName, string clientSurname, string employeeSurname, string product_name, string purchase_date, decimal price)
+        public Purchase(string purchase_date, string clientName, string clientSurname, string product_name, string employeeSurname, decimal price)
         {
             Id = null; // Add a proper default value
+            PurchaseDate = purchase_date.Trim();
+            Client_name = clientName;
+            Client_surname = clientSurname;
+            ProductName = product_name;
+            EmployeeSurname = employeeSurname;
+            Price = price;
+        }
+        public Purchase(sbyte? index, string purchase_date, string clientName, string clientSurname, string product_name, string employeeSurname, decimal price)
+        {
+            Id = index; // Add a proper default value
             PurchaseDate = purchase_date.Trim();
             Client_name = clientName;
             Client_surname = clientSurname;
@@ -64,7 +74,7 @@ namespace ShopManager.DAL.Entities
         // Generate string for INSERT TO (EAN, name, net_price, production_country, production_date) !Do aktualizacji!
         public string ToInsert()
         {
-            return $"('{Id}', '{PurchaseDate}', '{ProductName}', '{Price}, '{Client_name}', '{Client_surname}',  '{EmployeeSurname}')";
+            return $"('{Id}', '{PurchaseDate}', '{ProductName}', '{Price}', '{Client_name}', '{Client_surname}',  '{EmployeeSurname}')";
         }
         // Check if the object exists
         public override bool Equals(object obj)
