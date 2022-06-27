@@ -226,8 +226,6 @@ namespace ShopManager.ViewModel
         #region AddProducts window methods
         public bool AddProductCheckData()
         {
-            //var date_format = "yyyy-MM-dd";
-            //DateTime dt;
             ean = ean.Trim(); addProductName = addProductName.Trim(); addProductPrice = addProductPrice.Trim();
             addProductionCountry = addProductionCountry.Trim(); addProductionDate = addProductionDate.Trim();
             if (ean == string.Empty | addProductName == string.Empty | addProductPrice == string.Empty | addProductionCountry == string.Empty | addProductionDate == string.Empty)
@@ -266,11 +264,11 @@ namespace ShopManager.ViewModel
             string[] tempDate = addProductionDate.Split(".");
             string validDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0];
             var product = new Product(ean, addProductName, decimal.Parse(addProductPrice), addProductionCountry, validDate);
-            if(RepoProducts.AddProduct(product))
+            var product_warehouse = new Warehouse(addProductName, "AM-215", decimal.Parse(addProductPrice));
+            if (RepoProducts.AddProduct(product) && RepoWarehouse.AddProduct(product_warehouse))
             {
                 AddProductClearData();
             }
-
         }
         #endregion
     }

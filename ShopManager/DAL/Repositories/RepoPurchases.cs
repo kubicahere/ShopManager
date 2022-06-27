@@ -84,25 +84,10 @@ namespace ShopManager.DAL.Repositories
                 purchase.Id = (sbyte)command.LastInsertedId;
                 connection.Close();
             }
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pl-PL");
+
             return state;
         }
-       /* public static bool EditPurchase(Purchase purchase, sbyte PurchaseID)
-        {
-            bool state = false;
-            using (var connection = DBConnection.Instance.Connection)
-            {
-                string EDIT_PURCHASE = $"UPDATE purchase SET purchase_date='{purchase.PurchaseDate}', product_code='{purchase.ProductCode}', " +
-                    $"client_id={purchase.ClientID}, employee_id='{purchase.EmployeeID}' WHERE id={PurchaseID}";
-
-                MySqlCommand command = new MySqlCommand(EDIT_PURCHASE, connection);
-                connection.Open();
-                var n = command.ExecuteNonQuery();
-                if (n == 1) state = true;
-
-                connection.Close();
-            }
-            return state;
-        }*/
         public static bool DeletePurchase(Purchase purchase)
         {
             bool state = false;

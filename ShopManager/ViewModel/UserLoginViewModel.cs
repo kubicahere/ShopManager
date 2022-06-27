@@ -249,7 +249,7 @@ namespace ShopManager.ViewModel
             ObservableCollection<Product> products = RepoProducts.GetAllProducts();
             for(int i = 0; i < products.Count; i++)
             {
-                listOfProducts.Add(products[i].ToString());
+                listOfProducts.Add(products[i].Name);
             }
         }
         public void ProductsListChanged(object sender)
