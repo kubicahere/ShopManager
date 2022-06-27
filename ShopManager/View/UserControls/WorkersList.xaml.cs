@@ -101,7 +101,7 @@ namespace ShopManager.View.UserControls
             RaiseEvent(args);
         }
         public static readonly RoutedEvent WorkersListItemChangedEvent =
-            EventManager.RegisterRoutedEvent("PurchaseListItemChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(WorkersList));
+            EventManager.RegisterRoutedEvent("WorkersListItemChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(WorkersList));
         public event RoutedEventHandler WorkersListItemChanged
         {
             add { AddHandler(WorkersListItemChangedEvent, value); }

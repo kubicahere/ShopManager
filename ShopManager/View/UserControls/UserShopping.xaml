@@ -8,10 +8,18 @@
              d:DesignHeight="400" d:DesignWidth="450">
     <Grid>
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="25"
-                Command="{Binding BackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+                Command="{Binding ShoppingBackButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="35,52,35,92"/>
+        <ListBox BorderBrush="Black" Margin="0,35,0,0" 
+                 Width="200" Height="300" VerticalAlignment="Top" HorizontalAlignment="Center"
+                 SelectionChanged="RaiseWorkersListItemChanged"
+                 ItemsSource="{Binding ProductsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                 SelectedItem="{Binding SingleSelectedProduct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 
-        <Button Content="BUY" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Height="40" Width="250" FontSize="20"/>
+        <Button Content="BUY" HorizontalAlignment="Center" Margin="0,350,0,0" VerticalAlignment="Top" Height="35" Width="100" FontSize="15"
+                Command="{Binding BuyButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
     </Grid>
 </UserControl>
