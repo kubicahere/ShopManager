@@ -10,6 +10,8 @@ namespace ShopManager.DAL.Repositories
 {
     using Entities;
     using System.Collections.ObjectModel;
+    using System.Globalization;
+    using System.Threading;
     using System.Windows;
 
     static class RepoPurchases
@@ -69,6 +71,10 @@ namespace ShopManager.DAL.Repositories
         public static bool AddPurchase(Purchase purchase)
         {
             bool state = false;
+            string _price = purchase.Price.ToString().Replace(",", ".");
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+            purchase.Price = decimal.Parse(_price);
+            MessageBox.Show(purchase.Price.ToString());
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand($"{ADD_PURCHASE} {purchase.ToInsert()}", connection);

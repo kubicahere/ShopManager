@@ -272,7 +272,7 @@ namespace ShopManager.ViewModel
             sbyte? lastIndex = RepoPurchases.GetLastPurchaseID();
             CultureInfo culture = new CultureInfo("en-US");
 
-            Purchase purchase = new Purchase(lastIndex, todayDate, singleClient.Name, singleClient.Surname, singleProduct.Name, employee.Surname, Convert.ToDecimal(singleProduct.NetPrice, culture));
+            Purchase purchase = new Purchase(Convert.ToSByte(lastIndex + 1), todayDate, singleClient.Name, singleClient.Surname, singleProduct.Name, employee.Surname, Convert.ToDecimal(singleProduct.NetPrice, culture));
             if(RepoPurchases.AddPurchase(purchase))
             {
                 selectedProduct = string.Empty;
