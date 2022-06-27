@@ -10,6 +10,8 @@ namespace ShopManager.DAL.Repositories
 {
     using Entities;
     using System.Collections.ObjectModel;
+    using System.Globalization;
+    using System.Threading;
 
     static class RepoProducts
     {
@@ -36,6 +38,9 @@ namespace ShopManager.DAL.Repositories
         public static bool AddProduct(Product product)
         {
             bool state = false;
+            string _price = product.NetPrice.ToString().Replace(",", ".");
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+            product.NetPrice = decimal.Parse(_price);
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand($"{ADD_PRODUCT} {product.ToInsert()}", connection);
@@ -46,6 +51,7 @@ namespace ShopManager.DAL.Repositories
                 //product.EAN = (string)command.LastInsertedId;
                 connection.Close();
             }
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pl-PL");
             return state;
         }
         public static bool EditProduct(Product product, decimal EAN)

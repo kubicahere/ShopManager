@@ -74,7 +74,6 @@ namespace ShopManager.DAL.Repositories
             string _price = purchase.Price.ToString().Replace(",", ".");
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
             purchase.Price = decimal.Parse(_price);
-            MessageBox.Show(purchase.Price.ToString());
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand($"{ADD_PURCHASE} {purchase.ToInsert()}", connection);
