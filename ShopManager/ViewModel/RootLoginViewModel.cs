@@ -173,14 +173,20 @@ namespace ShopManager.ViewModel
         public void WorkersListChanged(object sender)
         {
             int index = listOfWorkers.IndexOf(selectedWorker);
+            if(index == -1)
+            {
+                firstname = string.Empty;
+                secondname = string.Empty;
+                salary = string.Empty;
+                position = string.Empty;
+                return;
+            }
             Employee employee = new Employee(rootModel.listOfEmployees[index]);
             firstname = employee.Name;
             secondname = employee.Surname;
             salary = employee.Salary.ToString();
             string positionName = employee.PositionName;
-            //Position pos = RepoPositions.GetPositionById(positionID);
             position = positionName;
-            
         }
         #endregion
         #region TotalPurchaseList window methods
@@ -202,6 +208,14 @@ namespace ShopManager.ViewModel
         public void TotalPurchaseListChanged(object sender)
         {
             int index = listOfTotalPurchases.IndexOf(selectedPurchase);
+            if(index == -1)
+            {
+                purchaseDate = string.Empty;
+                productName = string.Empty;
+                clientName = string.Empty;
+                purchaseListPrice = string.Empty;
+                return;
+            }    
             Purchase purchase = new Purchase(rootModel.listOfPurchases[index]);
             purchaseDate = purchase.PurchaseDate;
             productName = purchase.ProductName;
@@ -247,11 +261,10 @@ namespace ShopManager.ViewModel
         }
         public void AddProductsButton(object sender)
         {
-            string[] tempDate = addProductionDate.Split(".");
-            string validDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0];
-            MessageBox.Show(ean + " " + addProductName + " " + addProductPrice + " " + addProductionCountry + " " + validDate);
             if (!AddProductCheckData()) return;
             canAddProduct = "False";
+            string[] tempDate = addProductionDate.Split(".");
+            string validDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0];
             var product = new Product(ean, addProductName, decimal.Parse(addProductPrice), addProductionCountry, validDate);
             if(RepoProducts.AddProduct(product))
             {

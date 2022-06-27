@@ -80,9 +80,7 @@ namespace ShopManager.ViewModel
         public User userModel { get; set; }
         public UserLoginViewModel()
         {
-            listOfTransactions.Add("TEST");
-            listOfTransactions.Add("TEST");
-            listOfTransactions.Add("TEST");
+
         }
 
         #region Methods
@@ -163,10 +161,20 @@ namespace ShopManager.ViewModel
         {
             isVisiblePurchaseHistory = "Hidden";
             isVisibleUserWindow = "Visible";
+            //selectedTransaction = string.Empty;
         }
         public void PurchaseListChanged(object sender)
         {
             int index = listOfTransactions.IndexOf(selectedTransaction);
+            if (index == -1)
+            {
+                purchaseDate = string.Empty;
+                productName = string.Empty;
+                clientName = string.Empty;
+                purchaseListPrice = string.Empty;
+                return;
+            }
+            
             Client singleClient = RepoClients.GetClientByLoginAndPasswd(login, password);
             ObservableCollection<Purchase> transactions = RepoPurchases.GetClientPurchasesById(singleClient);
             Purchase purchase = new Purchase(transactions[index]);
